@@ -1,0 +1,17 @@
+{% extends 'ceaiuri/baza.html' %}
+
+{% block titlu %}{{ produs.nume }}{% endblock %}
+
+{% block continut %}
+<h1>{{ produs.nume }}</h1>
+{{ produs.descriere|linebreaks }}
+<dl>
+    <dt>Categorie</dt><dd>{{ produs.categorie.nume }}</dd>
+    <dt>Țara de origine</dt><dd>{{ produs.tara_origine }}</dd>
+    <dt>Gramaj</dt><dd>{{ produs.gramaj_g }} g</dd>
+    <dt>Preț</dt><dd>{{ produs.pret }} lei</dd>
+    <dt>Ecologic</dt><dd>{{ produs.ecologic|yesno:"Da,Nu" }}</dd>
+    <dt>Data adăugării</dt><dd>{{ produs.data_adaugare|date:"d.m.Y" }}</dd>
+</dl>
+<p><a href="{% url 'ceaiuri:produse' %}">Înapoi la produse</a></p>
+{% endblock %}

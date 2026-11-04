@@ -1,0 +1,30 @@
+{% extends 'ceaiuri/baza.html' %}
+{% load static %}
+
+{% block titlu %}Frunză de Ceai{% endblock %}
+
+{% block continut %}
+<h1>Frunză de Ceai</h1>
+<section id="prezentare">
+    <h2>Bine ai venit!</h2>
+    <p>{{ descriere }}</p>
+    <img src="{% static 'ceaiuri/imagini/ceasca.svg' %}" alt="O ceașcă de ceai cald, alături de frunze verzi" width="600" height="300">
+</section>
+<section id="sortimente">
+    <h2>Sortimente de ceai</h2>
+    <p>Descoperă ceaiuri verzi, negre, albe și oolong. Fiecare sortiment are propria aromă și propriul mod de preparare.</p>
+</section>
+<section id="preparare">
+    <h2>Cum preparăm ceaiul</h2>
+    <p>Alegem frunzele, încălzim apa și respectăm timpul de infuzare indicat pe ambalaj. Temperatura apei depinde de sortimentul ales.</p>
+</section>
+<section id="program">
+    <h2>Program</h2>
+    <p>{{ firma.program }}</p>
+    <p>Ne poți scrie la {{ firma.email }} pentru întrebări despre magazin.</p>
+</section>
+<section id="noutati">
+    <h2>Noutăți</h2>
+    <p>Pregătim catalogul de ceaiuri. În curând vei putea descoperi produsele și aromele preferate.</p>
+</section>
+{% endblock %}

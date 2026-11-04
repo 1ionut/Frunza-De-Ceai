@@ -1,0 +1,81 @@
+{% extends 'ceaiuri/baza.html' %}
+
+{% block titlu %}Accesările site-ului{% endblock %}
+
+{% block continut %}
+<h1>Accesările site-ului</h1>
+
+{% if coloane %}
+<div class="tabel-container">
+    <table>
+        <thead>
+            <tr>
+                {% for coloana in coloane %}
+                <th scope="col">{{ coloana }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for rand in randuri %}
+            <tr>
+                {% for valoare in rand %}
+                <td>{{ valoare }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<ul>
+    {% for accesare in accesari %}
+    <li>
+        <a href="{% url 'ceaiuri:accesare' accesare.id %}">Accesarea {{ accesare.id }}</a>:
+        {{ accesare.url }} — {{ accesare.data|date:'d.m.Y H:i:s' }}
+    </li>
+    {% empty %}
+    <li>Nu există accesări de afișat.</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if mesaj_eroare %}
+<p class="eroare">{{ mesaj_eroare }}</p>
+{% endif %}
+
+<section>
+    <h2>Pagini accesate</h2>
+    <p>Cea mai puțin accesată pagină: {{ pagina_minima }} ({{ numar_minim }} accesări).</p>
+    <p>Cea mai mult accesată pagină: {{ pagina_maxima }} ({{ numar_maxim }} accesări).</p>
+</section>
+
+{% if mod_accesari == 'nr' %}
+<section>
+    <h2>Număr de accesări</h2>
+    <p>De la pornirea serverului: {{ total_accesari }}</p>
+</section>
+{% elif mod_accesari == 'detalii' %}
+<section>
+    <h2>Data și ora accesărilor</h2>
+    <ul>
+        {% for accesare in accesari %}
+        <li>{{ accesare.data|date:'d.m.Y H:i:s' }}</li>
+        {% empty %}
+        <li>Nu există accesări de afișat.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<section>
+    <h2>Parametri</h2>
+    <p>Număr de parametri primiți: {{ numar_parametri }}</p>
+    <ul>
+        {% for parametru in parametri %}
+        <li>{{ parametru }}</li>
+        {% empty %}
+        <li>Pagina nu a primit parametri.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titlu %}Frunză de Ceai{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'ceaiuri/css/nav.css' %}">
+</head>
+<body>
+    <header>
+        <a class="nume-site" href="{% url 'ceaiuri:index' %}">{{ firma.nume }}</a>
+        <p>Un ceai bun începe cu o pauză.</p>
+        <nav aria-label="Meniu principal">
+            <ul class="meniu">
+                <li>
+                    <a href="{% url 'ceaiuri:index' %}">Acasă ▾</a>
+                    <ul>
+                        <li><a href="{% url 'ceaiuri:index' %}#prezentare">Prezentare</a></li>
+                        <li><a href="{% url 'ceaiuri:index' %}#sortimente">Sortimente</a></li>
+                        <li><a href="{% url 'ceaiuri:index' %}#preparare">Preparare</a></li>
+                        <li><a href="{% url 'ceaiuri:index' %}#program">Program</a></li>
+                        <li><a href="{% url 'ceaiuri:index' %}#noutati">Noutăți</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'ceaiuri:despre' %}">Despre</a></li>
+                <li><a href="{% url 'ceaiuri:istoric' %}">Istoric</a></li>
+                <li><a href="{% url 'ceaiuri:produse' %}">Produse</a></li>
+                <li><a href="{% url 'ceaiuri:contact' %}">Contact</a></li>
+                <li><a href="{% url 'ceaiuri:cos_virtual' %}">Coș virtual</a></li>
+                <li>
+                    <a href="{% url 'ceaiuri:info' %}">Informații ▾</a>
+                    <ul>
+                        <li><a href="{% url 'ceaiuri:info' %}">Server</a></li>
+                        <li><a href="{% url 'ceaiuri:log' %}">Accesări</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block continut %}{% endblock %}
+    </main>
+    <footer>
+        <p>© {{ firma.an_infiintare }}–{{ an_curent }} {{ firma.nume }}</p>
+        <p>Adresă: {{ firma.adresa }}</p>
+        <p>Telefon: {{ firma.telefon }} · Email: {{ firma.email }}</p>
+        <p>Program: {{ firma.program }}</p>
+        <p>IP-ul tău: {{ request.ip_client }}</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1140" viewBox="0 0 1600 1140" role="img" aria-labelledby="titlu descriere">
+<title id="titlu">Frunză de Ceai — diagrama bazei de date</title>
+<desc id="descriere">Cinci entități: Categorie, Ceai, Aroma, Sediu și Raion. Relații 1:N și M:N. Raion are cheia compusă din sediu_id și cod_raion. Recomandările de preparare sunt un vector.</desc>
+<rect width="1600" height="1140" fill="white"/>
+<text x="50" y="52.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#596d63">FRUNZĂ DE CEAI</text>
+<text x="50" y="101.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#213e32">Diagrama bazei de date</text>
+<text x="50" y="151.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#596d63">5 entități • 6 tipuri de date • un atribut multivaloare • o entitate slabă</text>
+<path d="M50,180 L1550,180" fill="none" stroke="#8fa69a" stroke-width="1"/>
+<rect x="50" y="200" width="340" height="290" fill="#ffffff" stroke="#213e32" stroke-width="2"/>
+<rect x="50" y="200" width="340" height="52" fill="#eaf3eb" stroke="#213e32" stroke-width="1"/>
+<text x="68" y="226.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#213e32">Categorie</text>
+<text x="67" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">PK</text>
+<text x="138" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">id</text>
+<text x="372" y="268.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="67" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">nume</text>
+<text x="372" y="300.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">descriere</text>
+<text x="372" y="332.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="364.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="364.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">culoare</text>
+<text x="372" y="364.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="396.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="396.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">sigla</text>
+<text x="372" y="396.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="428.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="428.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">vizibila</text>
+<text x="372" y="428.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">bool</text>
+<text x="68" y="468.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">Grupează ceaiurile după tip.</text>
+<rect x="600" y="200" width="460" height="465" fill="#ffffff" stroke="#213e32" stroke-width="2"/>
+<rect x="600" y="200" width="460" height="52" fill="#eaf3eb" stroke="#213e32" stroke-width="1"/>
+<text x="618" y="226.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#213e32">Ceai</text>
+<text x="617" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">PK</text>
+<text x="688" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">id</text>
+<text x="1042" y="268.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="617" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">FK</text>
+<text x="688" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">categorie_id</text>
+<text x="1042" y="300.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="617" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">nume</text>
+<text x="1042" y="332.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="617" y="364.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="364.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">descriere</text>
+<text x="1042" y="364.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="617" y="396.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="396.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">tara_origine</text>
+<text x="1042" y="396.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="617" y="428.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="428.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">gramaj_g</text>
+<text x="1042" y="428.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="617" y="460.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="460.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">pret</text>
+<text x="1042" y="460.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">decimal</text>
+<text x="617" y="492.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="492.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">intensitate</text>
+<text x="1042" y="492.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">enum</text>
+<text x="617" y="524.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="524.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">ecologic</text>
+<text x="1042" y="524.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">bool</text>
+<text x="617" y="556.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="688" y="556.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">data_adaugare</text>
+<text x="1042" y="556.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">date</text>
+<rect x="609" y="573" width="442" height="30" fill="#f4f8f4" stroke="none" stroke-width="0"/>
+<text x="617" y="588.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">MULTI</text>
+<text x="688" y="588.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">recomandari_preparare</text>
+<text x="1042" y="588.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string[]</text>
+<text x="618" y="643.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">Un produs = un pachet la un gramaj dat.</text>
+<rect x="1250" y="200" width="300" height="190" fill="#ffffff" stroke="#213e32" stroke-width="2"/>
+<rect x="1250" y="200" width="300" height="52" fill="#eaf3eb" stroke="#213e32" stroke-width="1"/>
+<text x="1268" y="226.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#213e32">Aroma</text>
+<text x="1267" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">PK</text>
+<text x="1338" y="268.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">id</text>
+<text x="1532" y="268.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="1267" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="1338" y="300.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">nume</text>
+<text x="1532" y="300.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="1267" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="1338" y="332.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">descriere</text>
+<text x="1532" y="332.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="1268" y="368.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">Note de gust și miros.</text>
+<rect x="50" y="810" width="340" height="230" fill="#ffffff" stroke="#213e32" stroke-width="2"/>
+<rect x="50" y="810" width="340" height="52" fill="#eaf3eb" stroke="#213e32" stroke-width="1"/>
+<text x="68" y="836.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#213e32">Sediu</text>
+<text x="67" y="878.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32">PK</text>
+<text x="138" y="878.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">id</text>
+<text x="372" y="878.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="67" y="910.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="910.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">nume</text>
+<text x="372" y="910.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="942.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="942.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">adresa</text>
+<text x="372" y="942.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="67" y="974.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#213e32"></text>
+<text x="138" y="974.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">telefon</text>
+<text x="372" y="974.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="68" y="1018.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">Punct fizic al firmei.</text>
+<rect x="600" y="810" width="460" height="230" fill="#ffffff" stroke="#815a21" stroke-width="2"/>
+<rect x="600" y="810" width="460" height="52" fill="#fff3db" stroke="#815a21" stroke-width="1"/>
+<text x="618" y="836.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#815a21">Raion</text>
+<rect x="605" y="815" width="450" height="220" fill="none" stroke="#815a21" stroke-width="1"/>
+<text x="1040" y="837.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#815a21">entitate slabă</text>
+<text x="617" y="878.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#815a21">PK, FK</text>
+<text x="688" y="878.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">sediu_id</text>
+<text x="1042" y="878.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">int</text>
+<text x="617" y="910.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#815a21">PK*</text>
+<text x="688" y="910.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">cod_raion</text>
+<text x="1042" y="910.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="617" y="942.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#815a21"></text>
+<text x="688" y="942.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">nume</text>
+<text x="1042" y="942.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="617" y="974.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#815a21"></text>
+<text x="688" y="974.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">descriere</text>
+<text x="1042" y="974.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#596d63">string</text>
+<text x="618" y="1018.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#815a21">PK = (sediu_id, cod_raion)</text>
+<path d="M390,340 L600,340" fill="none" stroke="#213e32" stroke-width="2"/>
+<text x="495.0" y="314.5" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">încadrează · 1:N</text>
+<text x="402" y="361.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">1</text>
+<text x="589" y="361.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<path d="M1060,300 L1250,300" fill="none" stroke="#213e32" stroke-width="2"/>
+<text x="1155.0" y="274.5" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">are · M:N</text>
+<text x="1072" y="321.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<text x="1239" y="321.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<path d="M390,920 L600,920" fill="none" stroke="#213e32" stroke-width="2"/>
+<text x="495.0" y="894.5" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">conține · 1:N</text>
+<text x="402" y="941.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">1</text>
+<text x="589" y="941.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<text x="495.0" y="975.0" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#815a21">relație de identificare</text>
+<path d="M830,665 L830,810" fill="none" stroke="#213e32" stroke-width="2"/>
+<text x="814" y="687.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<text x="814" y="787.0" dominant-baseline="central" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">0..N</text>
+<text x="853" y="738.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#213e32">este expus în · M:N</text>
+<rect x="1250" y="435" width="300" height="225" fill="#f7faf7" stroke="#d5e1d8" stroke-width="1"/>
+<text x="1268" y="462.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#596d63">INTENSITATE</text>
+<text x="1268" y="498.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213e32">enum = una dintre:</text>
+<text x="1268" y="534.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">• delicata</text>
+<text x="1268" y="564.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">• echilibrata</text>
+<text x="1268" y="594.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213e32">• puternica</text>
+<text x="1268" y="635.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#596d63">Valoare stabilită pentru produs.</text>
+<rect x="1150" y="810" width="400" height="230" fill="#f7faf7" stroke="#d5e1d8" stroke-width="1"/>
+<text x="1168" y="837.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#596d63">LEGENDĂ</text>
+<text x="1168" y="876.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">PK = cheie primară; FK = cheie externă</text>
+<text x="1168" y="906.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">PK* = parte locală a cheii compuse</text>
+<text x="1168" y="936.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">MULTI / string[] = vector de texte</text>
+<text x="1168" y="966.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">1 = exact unul; 0..N = zero sau mai multe</text>
+<text x="1168" y="996.5" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#213e32">Contur dublu = entitate slabă</text>
+<path d="M50,1080 L1550,1080" fill="none" stroke="#8fa69a" stroke-width="1"/>
+<text x="50" y="1106.0" dominant-baseline="central" text-anchor="start" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#596d63">Model conceptual • Relațiile M:N sunt desenate direct, fără tabele asociative.</text>
+</svg>

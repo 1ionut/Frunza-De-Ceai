@@ -1,0 +1,38 @@
+{% extends 'ceaiuri/baza.html' %}
+
+{% block titlu %}Produse{% endblock %}
+
+{% block continut %}
+<h1>Produse</h1>
+<ul>
+    {% for produs in produse %}
+    <li>
+        <h2><a href="{% url 'ceaiuri:produs' produs.id %}">{{ produs.nume }}</a></h2>
+        <p>Categorie: {{ produs.categorie.nume }}</p>
+        <p>{{ produs.gramaj_g }} g · {{ produs.pret }} lei</p>
+    </li>
+    {% empty %}
+    <li>Nu există produse disponibile momentan.</li>
+    {% endfor %}
+</ul>
+{% if produse.has_other_pages %}
+<nav aria-label="Paginare produse">
+    {% if produse.has_previous %}
+    <a href="?pagina={{ produse.previous_page_number }}">Anterior</a>
+    {% endif %}
+
+    {% for numar in numere_pagini %}
+        {% if numar == produse.number %}
+        <span aria-current="page">{{ numar }}</span>
+        {% else %}
+        <a href="?pagina={{ numar }}">{{ numar }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if produse.has_next %}
+    <a href="?pagina={{ produse.next_page_number }}">Următor</a>
+    {% endif %}
+    <p>Pagina {{ produse.number }} din {{ produse.paginator.num_pages }}</p>
+</nav>
+{% endif %}
+{% endblock %}

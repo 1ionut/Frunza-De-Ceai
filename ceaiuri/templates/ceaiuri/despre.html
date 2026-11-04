@@ -1,0 +1,17 @@
+{% extends 'ceaiuri/baza.html' %}
+{% load static %}
+
+{% block titlu %}Despre noi{% endblock %}
+
+{% block continut %}
+<h1>Despre noi</h1>
+<section id="poveste">
+    <h2>Povestea noastră</h2>
+    <p>Frunză de Ceai a pornit din bucuria unei cești de ceai împărțite cu prietenii. Vrem să facem alegerea unui ceai mai ușoară, cu explicații clare despre fiecare sortiment.</p>
+    <img src="{% static 'ceaiuri/imagini/frunze.svg' %}" alt="Frunze de ceai verzi pe o ramură" width="600" height="300">
+</section>
+<section id="valori">
+    <h2>Ce ne dorim</h2>
+    <p>Ne dorim să oferim ceaiuri vrac, informații despre originea lor și sfaturi de preparare. Construim magazinul pas cu pas, cu atenție la lucrurile simple.</p>
+</section>
+{% endblock %}

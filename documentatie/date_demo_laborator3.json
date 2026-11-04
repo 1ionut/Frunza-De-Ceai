@@ -1,0 +1,459 @@
+[
+{
+  "model": "ceaiuri.categorie",
+  "pk": 1,
+  "fields": {
+    "nume": "Ceai verde",
+    "slug": "ceai-verde",
+    "descriere": "Ceaiuri cu note vegetale și gust proaspăt.",
+    "culoare": "#4C7A45",
+    "sigla": "fa-solid fa-leaf",
+    "vizibila": true
+  }
+},
+{
+  "model": "ceaiuri.categorie",
+  "pk": 2,
+  "fields": {
+    "nume": "Ceai negru",
+    "slug": "ceai-negru",
+    "descriere": "Ceaiuri oxidate, cu gust intens și note de malț.",
+    "culoare": "#563B2B",
+    "sigla": "fa-solid fa-leaf",
+    "vizibila": true
+  }
+},
+{
+  "model": "ceaiuri.categorie",
+  "pk": 3,
+  "fields": {
+    "nume": "Ceai alb",
+    "slug": "ceai-alb",
+    "descriere": "Ceaiuri fine din muguri și frunze tinere.",
+    "culoare": "#D8CBA8",
+    "sigla": "fa-solid fa-leaf",
+    "vizibila": true
+  }
+},
+{
+  "model": "ceaiuri.categorie",
+  "pk": 4,
+  "fields": {
+    "nume": "Ceai oolong",
+    "slug": "ceai-oolong",
+    "descriere": "Ceaiuri parțial oxidate, florale sau prăjite.",
+    "culoare": "#B27A3F",
+    "sigla": "fa-solid fa-leaf",
+    "vizibila": true
+  }
+},
+{
+  "model": "ceaiuri.categorie",
+  "pk": 5,
+  "fields": {
+    "nume": "Infuzii de plante și fructe",
+    "slug": "infuzii-plante-fructe",
+    "descriere": "Amestecuri aromate de plante, flori și fructe.",
+    "culoare": "#A34258",
+    "sigla": "fa-solid fa-leaf",
+    "vizibila": true
+  }
+},
+{
+  "model": "ceaiuri.aroma",
+  "pk": 1,
+  "fields": {
+    "nume": "Vegetală",
+    "descriere": "Note proaspete de frunze și iarbă."
+  }
+},
+{
+  "model": "ceaiuri.aroma",
+  "pk": 2,
+  "fields": {
+    "nume": "Florală",
+    "descriere": "Note delicate de iasomie și flori."
+  }
+},
+{
+  "model": "ceaiuri.aroma",
+  "pk": 3,
+  "fields": {
+    "nume": "Citrică",
+    "descriere": "Accente de bergamotă și coajă de lămâie."
+  }
+},
+{
+  "model": "ceaiuri.aroma",
+  "pk": 4,
+  "fields": {
+    "nume": "Prăjită",
+    "descriere": "Note calde de nuci și frunze prăjite."
+  }
+},
+{
+  "model": "ceaiuri.aroma",
+  "pk": 5,
+  "fields": {
+    "nume": "Fructată",
+    "descriere": "Note dulci-acrișoare de fructe."
+  }
+},
+{
+  "model": "ceaiuri.sediu",
+  "pk": 1,
+  "fields": {
+    "nume": "Magazin Centru",
+    "adresa": "Strada Ceaiului nr. 10, București (adresă demonstrativă)",
+    "telefon": "0700000001"
+  }
+},
+{
+  "model": "ceaiuri.sediu",
+  "pk": 2,
+  "fields": {
+    "nume": "Magazin Nord",
+    "adresa": "Strada Frunzelor nr. 12, București (adresă demonstrativă)",
+    "telefon": "0700000002"
+  }
+},
+{
+  "model": "ceaiuri.sediu",
+  "pk": 3,
+  "fields": {
+    "nume": "Magazin Vest",
+    "adresa": "Aleea Infuziei nr. 5, București (adresă demonstrativă)",
+    "telefon": null
+  }
+},
+{
+  "model": "ceaiuri.sediu",
+  "pk": 4,
+  "fields": {
+    "nume": "Magazin Est",
+    "adresa": "Strada Aromelor nr. 8, București (adresă demonstrativă)",
+    "telefon": "0700000004"
+  }
+},
+{
+  "model": "ceaiuri.sediu",
+  "pk": 5,
+  "fields": {
+    "nume": "Magazin Sud",
+    "adresa": "Aleea Mugurilor nr. 3, București (adresă demonstrativă)",
+    "telefon": null
+  }
+},
+{
+  "model": "ceaiuri.raion",
+  "pk": 1,
+  "fields": {
+    "sediu": 1,
+    "cod_raion": "R1",
+    "nume": "Ceaiuri verzi",
+    "descriere": "Selecție de ceaiuri verzi și accesorii de prezentare."
+  }
+},
+{
+  "model": "ceaiuri.raion",
+  "pk": 2,
+  "fields": {
+    "sediu": 2,
+    "cod_raion": "R1",
+    "nume": "Ceaiuri negre",
+    "descriere": "Selecție de ceaiuri cu gust intens."
+  }
+},
+{
+  "model": "ceaiuri.raion",
+  "pk": 3,
+  "fields": {
+    "sediu": 3,
+    "cod_raion": "R1",
+    "nume": "Ceaiuri albe",
+    "descriere": "Selecție de ceaiuri delicate din muguri."
+  }
+},
+{
+  "model": "ceaiuri.raion",
+  "pk": 4,
+  "fields": {
+    "sediu": 4,
+    "cod_raion": "R1",
+    "nume": "Ceaiuri oolong",
+    "descriere": "Selecție de ceaiuri parțial oxidate."
+  }
+},
+{
+  "model": "ceaiuri.raion",
+  "pk": 5,
+  "fields": {
+    "sediu": 5,
+    "cod_raion": "R1",
+    "nume": "Infuzii de plante",
+    "descriere": "Selecție de amestecuri din plante și fructe."
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 1,
+  "fields": {
+    "nume": "Sencha",
+    "descriere": "Ceai verde cu note vegetale și gust proaspăt.",
+    "tara_origine": "Japonia",
+    "gramaj_g": 100,
+    "pret": "29.90",
+    "intensitate": "echilibrata",
+    "ecologic": true,
+    "data_adaugare": "2026-11-04T10:28:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 80°C",
+      "Lasă la infuzat 3 minute"
+    ],
+    "imagine": "",
+    "categorie": 1,
+    "arome": [
+      2,
+      1
+    ],
+    "raioane": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 2,
+  "fields": {
+    "nume": "Gunpowder",
+    "descriere": "Frunze rulate în perle, cu note ușor afumate.",
+    "tara_origine": "China",
+    "gramaj_g": 100,
+    "pret": "24.50",
+    "intensitate": "puternica",
+    "ecologic": false,
+    "data_adaugare": "2026-11-04T10:29:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 80°C",
+      "Lasă la infuzat 2 minute"
+    ],
+    "imagine": "",
+    "categorie": 1,
+    "arome": [
+      4,
+      1
+    ],
+    "raioane": [
+      1
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 3,
+  "fields": {
+    "nume": "Assam",
+    "descriere": "Ceai negru corpolent, cu note de malț.",
+    "tara_origine": "India",
+    "gramaj_g": 100,
+    "pret": "27.90",
+    "intensitate": "puternica",
+    "ecologic": false,
+    "data_adaugare": "2026-11-04T10:29:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 95°C",
+      "Lasă la infuzat 4 minute"
+    ],
+    "imagine": "",
+    "categorie": 2,
+    "arome": [
+      4
+    ],
+    "raioane": [
+      2
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 4,
+  "fields": {
+    "nume": "Earl Grey",
+    "descriere": "Ceai negru aromatizat cu bergamotă.",
+    "tara_origine": "Sri Lanka",
+    "gramaj_g": 100,
+    "pret": "31.00",
+    "intensitate": "echilibrata",
+    "ecologic": false,
+    "data_adaugare": "2026-11-04T10:29:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 95°C",
+      "Lasă la infuzat 3 minute"
+    ],
+    "imagine": "",
+    "categorie": 2,
+    "arome": [
+      3
+    ],
+    "raioane": [
+      2
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 5,
+  "fields": {
+    "nume": "Bai Mu Dan",
+    "descriere": "Ceai alb din muguri și frunze tinere, cu note florale.",
+    "tara_origine": "China",
+    "gramaj_g": 50,
+    "pret": "34.90",
+    "intensitate": "delicata",
+    "ecologic": true,
+    "data_adaugare": "2026-11-04T10:29:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 80°C",
+      "Lasă la infuzat 4 minute"
+    ],
+    "imagine": "",
+    "categorie": 3,
+    "arome": [
+      2
+    ],
+    "raioane": [
+      3
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 6,
+  "fields": {
+    "nume": "Silver Needle",
+    "descriere": "Ceai alb din muguri argintii, cu gust fin.",
+    "tara_origine": "China",
+    "gramaj_g": 30,
+    "pret": "49.90",
+    "intensitate": "delicata",
+    "ecologic": false,
+    "data_adaugare": "2026-11-04T10:29:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 75°C",
+      "Lasă la infuzat 4 minute"
+    ],
+    "imagine": "",
+    "categorie": 3,
+    "arome": [
+      2
+    ],
+    "raioane": [
+      3
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 7,
+  "fields": {
+    "nume": "Tie Guan Yin",
+    "descriere": "Oolong cu note de orhidee și gust catifelat.",
+    "tara_origine": "China",
+    "gramaj_g": 50,
+    "pret": "39.90",
+    "intensitate": "echilibrata",
+    "ecologic": false,
+    "data_adaugare": "2026-11-04T10:30:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 90°C",
+      "Lasă la infuzat 3 minute"
+    ],
+    "imagine": "",
+    "categorie": 4,
+    "arome": [
+      2
+    ],
+    "raioane": [
+      4
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 8,
+  "fields": {
+    "nume": "Dong Ding",
+    "descriere": "Oolong cu note prăjite și accente de nuci.",
+    "tara_origine": "Taiwan",
+    "gramaj_g": 50,
+    "pret": "42.00",
+    "intensitate": "puternica",
+    "ecologic": true,
+    "data_adaugare": "2026-11-04T10:30:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 90°C",
+      "Lasă la infuzat 3 minute"
+    ],
+    "imagine": "",
+    "categorie": 4,
+    "arome": [
+      4
+    ],
+    "raioane": [
+      4
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 9,
+  "fields": {
+    "nume": "Rooibos cu vanilie",
+    "descriere": "Infuzie de rooibos cu aromă caldă de vanilie.",
+    "tara_origine": "Africa de Sud",
+    "gramaj_g": 100,
+    "pret": "28.50",
+    "intensitate": "delicata",
+    "ecologic": true,
+    "data_adaugare": "2026-11-04T10:30:00Z",
+    "recomandari_preparare": [
+      "Folosește apă la 95°C",
+      "Lasă la infuzat 5 minute"
+    ],
+    "imagine": "",
+    "categorie": 5,
+    "arome": [
+      5
+    ],
+    "raioane": [
+      5
+    ]
+  }
+},
+{
+  "model": "ceaiuri.ceai",
+  "pk": 10,
+  "fields": {
+    "nume": "Mentă și lămâie",
+    "descriere": "Amestec de mentă și coajă de lămâie, cu aromă proaspătă.",
+    "tara_origine": "România",
+    "gramaj_g": 50,
+    "pret": "18.90",
+    "intensitate": "echilibrata",
+    "ecologic": true,
+    "data_adaugare": "2026-11-04T10:30:00Z",
+    "recomandari_preparare": [],
+    "imagine": "",
+    "categorie": 5,
+    "arome": [
+      3,
+      1
+    ],
+    "raioane": [
+      1,
+      5
+    ]
+  }
+}
+]

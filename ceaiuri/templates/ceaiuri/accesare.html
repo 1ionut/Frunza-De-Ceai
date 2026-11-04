@@ -1,0 +1,27 @@
+{% extends 'ceaiuri/baza.html' %}
+
+{% block titlu %}Accesarea {{ accesare.id }}{% endblock %}
+
+{% block continut %}
+<h1>Accesarea {{ accesare.id }}</h1>
+<dl>
+    <dt>ID</dt>
+    <dd>{{ accesare.id }}</dd>
+    <dt>IP client</dt>
+    <dd>{{ accesare.ip_client }}</dd>
+    <dt>URL</dt>
+    <dd>{{ accesare.url }}</dd>
+    <dt>Pagină</dt>
+    <dd>{{ accesare.pagina }}</dd>
+    <dt>Data și ora</dt>
+    <dd>{{ accesare.data|date:'d.m.Y H:i:s' }}</dd>
+</dl>
+<h2>Parametri</h2>
+<ul>
+    {% for nume, valoare in accesare.lista_parametri %}
+    <li>{{ nume }} = {{ valoare|default_if_none:'fără valoare' }}</li>
+    {% empty %}
+    <li>Accesarea nu are parametri.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
