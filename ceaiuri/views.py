@@ -29,6 +29,7 @@ COLOANE_CATALOG = {
     "pret": "Preț",
     "gramaj_g": "Gramaj",
     "data_adaugare": "Data adăugării",
+    "stoc": "Stoc",
 }
 
 
@@ -64,6 +65,10 @@ def produse(request):
     parametri["sort"] = "d" if request.GET.get("sort") == "d" else "a"
     prefix = "-" if parametri["sort"] == "d" else ""
     ceaiuri = Ceai.objects.select_related("categorie")
+    taguri = list(dict.fromkeys(tag for tag in request.GET.getlist("tag") if tag))
+    if taguri:
+        parametri.setlist("tag", taguri)
+        ceaiuri = ceaiuri.filter(taguri__contains=taguri)
     paginator = Paginator(ceaiuri.order_by(prefix + parametri["coloana"], "pk"), 5)
     pagina = paginator.get_page(request.GET.get("pagina", 1))
     context = {
@@ -71,6 +76,7 @@ def produse(request):
         "numere_pagini": range(1, paginator.num_pages + 1),
         "parametri_catalog": parametri,
         "coloane_catalog": COLOANE_CATALOG,
+        "taguri_active": taguri,
     }
     return render(request, "ceaiuri/produse.html", context)
 

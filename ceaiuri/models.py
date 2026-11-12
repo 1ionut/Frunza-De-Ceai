@@ -1,5 +1,7 @@
 from decimal import Decimal
 
+from django.conf import settings
+from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
@@ -110,6 +112,9 @@ class Ceai(models.Model):
         default="echilibrata",
         help_text="Intensitatea degustată a produsului; nu se deduce automat din categorie.")
     ecologic = models.BooleanField("ecologic", default=False)
+    stoc = models.PositiveIntegerField("stoc", default=0, db_default=0)
+    taguri = ArrayField(models.CharField(max_length=40), default=list, db_default=[], blank=True,
+        verbose_name="taguri", help_text="Cuvinte cheie separate prin virgulă.")
     data_adaugare = models.DateTimeField("data adăugării", default=timezone.now)
     recomandari_preparare = models.JSONField("recomandări de preparare", default=list, blank=True,
         help_text='Listă JSON de texte, de exemplu ["Apă la 80°C", "Infuzare 3 minute"]. Poate rămâne goală.')
@@ -143,6 +148,10 @@ class Ceai(models.Model):
 
     def get_absolute_url(self):
         return reverse("ceaiuri:produs", kwargs={"id": self.pk})
+
+    @property
+    def stoc_limitat(self):
+        return self.stoc < settings.STOC_MIN
 
     def clean(self):
         super().clean()

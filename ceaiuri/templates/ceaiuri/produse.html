@@ -1,5 +1,5 @@
 {% extends 'ceaiuri/baza.html' %}
-{% load static %}
+{% load static catalog %}
 
 {% block titlu %}Produse{% endblock %}
 {% block stiluri %}<link rel="stylesheet" href="{% static 'ceaiuri/css/catalog.css' %}">{% endblock %}
@@ -7,6 +7,7 @@
 {% block continut %}
 <h1>Produse</h1>
 <form method="get" class="sortare-catalog">
+    {% for tag in taguri_active %}<input type="hidden" name="tag" value="{{ tag }}">{% endfor %}
     <label for="coloana">Sortează după</label>
     <select id="coloana" name="coloana">
         {% for valoare, eticheta in coloane_catalog.items %}
@@ -20,6 +21,16 @@
     </select>
     <button type="submit">Sortează</button>
 </form>
+{% if taguri_active %}
+    <div class="filtre-active">
+        <strong>Taguri active</strong>
+        <ul class="taguri">
+            {% for tag in taguri_active %}
+                <li><a href="{% url_tag request.path parametri_catalog tag elimina=True %}" aria-label="Elimină tagul {{ tag }}">{{ tag }} <span aria-hidden="true">×</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 <ul class="grila-produse">
     {% for produs in produse %}
     <li class="card-produs">
@@ -28,6 +39,8 @@
         <h2><a href="{{ produs.get_absolute_url }}">{{ produs.nume }}</a></h2>
         <p>{{ produs.gramaj_g }} g{% if produs.tara_origine %} · {{ produs.tara_origine }}{% endif %}</p>
         <p class="pret-produs">{{ produs.pret }} lei</p>
+        {% if produs.stoc_limitat %}<p class="stoc-limitat">Stoc limitat</p>{% endif %}
+        {% include 'ceaiuri/taguri_produs.html' with cale_taguri=request.path %}
     </li>
     {% empty %}
     <li>Nu există produse disponibile momentan.</li>

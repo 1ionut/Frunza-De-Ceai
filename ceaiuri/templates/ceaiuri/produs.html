@@ -17,6 +17,7 @@
         <dt>Țara de origine</dt><dd>{{ produs.tara_origine|default:'Nespecificată' }}</dd>
         <dt>Gramaj</dt><dd>{{ produs.gramaj_g }} g</dd>
         <dt>Preț</dt><dd>{{ produs.pret }} lei</dd>
+        <dt>Stoc</dt><dd>{{ produs.stoc }}{% if produs.stoc_limitat %} · <span class="stoc-limitat">Stoc limitat</span>{% endif %}</dd>
         <dt>Intensitate</dt><dd>{{ produs.get_intensitate_display }}</dd>
         <dt>Ecologic</dt><dd>{{ produs.ecologic|yesno:"Da,Nu" }}</dd>
         <dt>Data adăugării</dt><dd>{{ produs.data_adaugare|date:"d.m.Y H:i" }}</dd>
@@ -26,6 +27,11 @@
         <dd>{% for raion in produs.raioane.all %}{{ raion }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
         <dt>Recomandări de preparare</dt>
         <dd>{% for recomandare in produs.recomandari_preparare %}{{ recomandare }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
+        <dt>Taguri</dt>
+        <dd>
+            {% url 'ceaiuri:produse' as cale_taguri %}
+            {% if produs.taguri %}{% include 'ceaiuri/taguri_produs.html' %}{% else %}Nespecificate{% endif %}
+        </dd>
     </dl>
 </div>
 <section aria-labelledby="titlu-similare">

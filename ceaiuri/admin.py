@@ -73,11 +73,11 @@ class CeaiAdmin(MesajeModelAdmin):
     form = CeaiAdminForm
     fieldsets = (
         ("Datele produsului", {
-            "fields": ("nume", "categorie", "gramaj_g", "pret", "intensitate", "ecologic", "data_adaugare"),
+            "fields": ("nume", "categorie", "gramaj_g", "pret", "stoc", "intensitate", "ecologic", "data_adaugare"),
         }),
         ("Detalii opționale", {
             "classes": ("collapse",),
-            "fields": ("descriere", "tara_origine", "recomandari_preparare", "imagine", "arome", "raioane"),
+            "fields": ("descriere", "tara_origine", "recomandari_preparare", "imagine", "arome", "raioane", "taguri"),
         }),
     )
     list_display = (

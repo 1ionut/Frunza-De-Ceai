@@ -1,0 +1,8 @@
+{% load catalog %}
+{% if produs.taguri %}
+    <ul class="taguri" aria-label="Taguri produs">
+        {% for tag in produs.taguri %}
+            <li><a href="{% url_tag cale_taguri parametri_catalog tag %}">{{ tag }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}

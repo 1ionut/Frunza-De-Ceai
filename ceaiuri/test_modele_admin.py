@@ -49,6 +49,7 @@ class ModeleSiAdministrareTests(TestCase):
             "categorie": str(self.categorie.pk),
             "gramaj_g": "50",
             "pret": "24.50",
+            "stoc": "0",
             "intensitate": "echilibrata",
             "data_adaugare_0": "2026-11-04",
             "data_adaugare_1": "10:30:00",

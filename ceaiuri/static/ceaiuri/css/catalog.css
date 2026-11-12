@@ -94,6 +94,35 @@
     font: inherit;
 }
 
+.stoc-limitat {
+    color: #a63224;
+    font-weight: bold;
+}
+
+.taguri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.taguri a {
+    display: inline-block;
+    padding: 1px 9px;
+    border: 1px solid #a6bfa9;
+    border-radius: 20px;
+    background: #eef4eb;
+    color: #234a32;
+    font-size: 0.85rem;
+}
+
+.filtre-active .taguri a {
+    background: #244b36;
+    color: #fff;
+}
+
 .sortare-catalog button {
     background: #244b36;
     color: #fff;
