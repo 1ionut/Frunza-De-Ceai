@@ -458,10 +458,10 @@ Din directorul proiectului, comanda de mai jos scrie 50 de comenzi în
 python genereaza_ceaiuri.py
 ```
 
-Generatorul folosește categoriile existente și variază numele, notele de gust,
-gramajul, prețul, intensitatea, statutul ecologic și recomandările de preparare.
-Scriptul folosește `Random(2026)` ca să reproducă aceleași produse pentru
-aceleași categorii.
+Generatorul completează un șablon `INSERT` cu `str.format()` și valori alese
+aleator. Folosește `Random(2026)` ca să poată reproduce aceleași produse.
+Poate fi rulat direct cu Python. La import, baza trebuie să conțină categoriile
+cu slugurile din lista `SOIURI`.
 
 Pentru import, deschide `ceaiuri_bonus.sql` în Query Tool din pgAdmin, conectat la
 baza proiectului, și execută întregul fișier. Comenzile `INSERT ... VALUES` rulează

@@ -1,69 +1,54 @@
-import os
-from decimal import Decimal
 from pathlib import Path
 from random import Random
 
-import django
-from psycopg import ClientCursor
-from psycopg.types.json import Jsonb
 
-
-INSERT_CEAI = """INSERT INTO ceaiuri_ceai (
+INSERT = """INSERT INTO ceaiuri_ceai (
     nume, descriere, tara_origine, gramaj_g, pret, intensitate, ecologic,
     data_adaugare, recomandari_preparare, categorie_id
-)
-VALUES (
-    %s, %s, %s, %s, %s, %s, %s,
-    CURRENT_TIMESTAMP - make_interval(days => %s), %s,
-    (SELECT id FROM ceaiuri_categorie WHERE slug = %s)
+) VALUES (
+    '{nume}', 'Ceai cu note de {aroma}.', '{origine}', {gramaj}, {pret:.2f},
+    '{intensitate}', {ecologic}, CURRENT_TIMESTAMP - INTERVAL '{zile} days',
+    '["Infuzare {minute} minute"]',
+    (SELECT id FROM ceaiuri_categorie WHERE slug = '{categorie}')
 );"""
+
+# Soi, țară de origine și slugul categoriei din baza de date.
+SOIURI = [
+    ("Sencha", "Japonia", "ceai-verde"),
+    ("Gunpowder", "China", "ceai-verde"),
+    ("Assam", "India", "ceai-negru"),
+    ("Earl Grey", "Sri Lanka", "ceai-negru"),
+    ("Bai Mu Dan", "China", "ceai-alb"),
+    ("Silver Needle", "China", "ceai-alb"),
+    ("Tie Guan Yin", "China", "ceai-oolong"),
+    ("Dong Ding", "Taiwan", "ceai-oolong"),
+    ("Rooibos", "Africa de Sud", "infuzii-plante-fructe"),
+    ("Infuzie de hibiscus", "România", "infuzii-plante-fructe"),
+]
+AROME = ["bergamotă", "iasomie", "mentă", "piersică", "portocală", "vanilie"]
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-    django.setup()
-
-    from django.db import connection
-
-    from ceaiuri.management.commands.populeaza_ceaiuri import CEAIURI
-    from ceaiuri.models import Categorie, Ceai
-
-    note = ("bergamotă", "coajă de portocală", "iasomie", "mentă", "piersică", "vanilie")
-    gramaje = (25, 40, 50, 75, 100, 150, 200, 250)
-    intensitati = [valoare for valoare, _ in Ceai._meta.get_field("intensitate").choices]
-
-    variante = []
-    for slug, categorie in Categorie.objects.order_by("slug").values_list("slug", "nume"):
-        soiuri = [(nume, origine) for nume, tip, origine, *_ in CEAIURI if tip == categorie]
-        for nume, origine in soiuri or [(categorie, None)]:
-            variante.extend((nume, aroma, origine, slug) for aroma in note)
-    if not variante:
-        raise SystemExit("Adaugă cel puțin o categorie în admin înainte de a genera ceaiuri.")
-
     rng = Random(2026)
-    rng.shuffle(variante)
+    combinatii = [(soi, aroma) for soi in SOIURI for aroma in AROME]
     comenzi = ["BEGIN;"]
-    with ClientCursor(connection.connection) as cursor:
-        for index in range(50):
-            nume, aroma, origine, slug = variante[index % len(variante)]
-            valori = (
-                f"{nume} cu note de {aroma}",
-                f"Ceai cu note de {aroma}.",
-                origine,
-                rng.choice(gramaje),
-                Decimal(rng.randint(1200, 9900)) / 100,
-                rng.choice(intensitati),
-                rng.choice((True, False)),
-                rng.randint(0, 365),
-                Jsonb([f"Infuzare {rng.randint(2, 6)} minute"]),
-                slug,
-            )
-            comenzi.append(cursor.mogrify(INSERT_CEAI, valori))
+    for (soi, origine, categorie), aroma in rng.sample(combinatii, 50):
+        comenzi.append(INSERT.format(
+            nume=f"{soi} cu note de {aroma}",
+            aroma=aroma,
+            origine=origine,
+            categorie=categorie,
+            gramaj=rng.choice([25, 50, 75, 100, 150, 200, 250]),
+            pret=rng.randint(1200, 9900) / 100,
+            intensitate=rng.choice(["delicata", "echilibrata", "puternica"]),
+            ecologic=rng.choice(["TRUE", "FALSE"]),
+            zile=rng.randint(0, 365),
+            minute=rng.randint(2, 6),
+        ))
     comenzi.append("COMMIT;")
-
     fisier = Path(__file__).with_name("ceaiuri_bonus.sql")
     fisier.write_text("\n\n".join(comenzi) + "\n", encoding="utf-8")
-    print(f"Am scris 50 de comenzi INSERT în {fisier.resolve()}.")
+    print(f"Am scris 50 de comenzi INSERT în {fisier.name}.")
 
 
 if __name__ == "__main__":
