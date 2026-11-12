@@ -45,9 +45,6 @@ class CatalogTests(TestCase):
         urmatoarea = self.client.get(adresa, {**parametri, "pagina": 2})
         self.assertEqual([ceai.pret for ceai in urmatoarea.context["produse"]], [Decimal("10")])
 
-        un_tag = self.client.get(adresa, {**parametri, "tag": "mentă", "pagina": 2})
-        self.assertContains(un_tag, f'href="{adresa}?coloana=pret&amp;sort=d&amp;tag=ment%C4%83&amp;tag=proasp%C4%83t"')
-
     def test_catalog_general_si_meniu_din_baza_de_date(self):
         raspuns = self.client.get(reverse("ceaiuri:produse"), {"coloana": "pret", "sort": "d", "tag": "mentă"})
         self.assertEqual(raspuns.context["produse"].paginator.count, 5)

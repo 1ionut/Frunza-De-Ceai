@@ -1,5 +1,5 @@
 {% extends 'ceaiuri/baza.html' %}
-{% load static %}
+{% load static catalog %}
 
 {% block titlu %}{% if categorie %}{{ categorie.nume }}{% else %}Produse{% endif %}{% endblock %}
 {% block stiluri %}<link rel="stylesheet" href="{% static 'ceaiuri/css/catalog.css' %}">{% endblock %}
@@ -14,7 +14,7 @@
     <h1>Produse</h1>
 {% endif %}
 <form method="get" class="sortare-catalog">
-    {% for tag, adresa in taguri_active %}<input type="hidden" name="tag" value="{{ tag }}">{% endfor %}
+    {% for tag in taguri_active %}<input type="hidden" name="tag" value="{{ tag }}">{% endfor %}
     <label for="coloana">Sortează după</label>
     <select id="coloana" name="coloana">
         {% for valoare, eticheta in coloane_catalog.items %}
@@ -32,8 +32,8 @@
     <div class="filtre-active">
         <strong>Taguri active</strong>
         <ul class="taguri">
-            {% for tag, adresa in taguri_active %}
-                <li><a href="{{ adresa }}" aria-label="Elimină tagul {{ tag }}">{{ tag }} <span aria-hidden="true">×</span></a></li>
+            {% for tag in taguri_active %}
+                <li><a href="{% url_tag request.path parametri_catalog tag elimina=True %}" aria-label="Elimină tagul {{ tag }}">{{ tag }} <span aria-hidden="true">×</span></a></li>
             {% endfor %}
         </ul>
     </div>
@@ -45,7 +45,7 @@
     <p>Se afișează 0 produse.</p>
 {% endif %}
 <ul class="grila-produse">
-    {% for produs, linkuri_taguri in carduri %}
+    {% for produs in produse %}
     <li class="card-produs" style="--culoare-categorie: {{ produs.categorie.culoare }};">
         {% include 'ceaiuri/imagine_produs.html' %}
         <p class="categorie-produs">{% include 'ceaiuri/link_categorie.html' with categorie=produs.categorie %}</p>
@@ -53,7 +53,7 @@
         <p>{{ produs.gramaj_g }} g{% if produs.tara_origine %} · {{ produs.tara_origine }}{% endif %}</p>
         <p class="pret-produs">{{ produs.pret }} lei</p>
         {% if produs.stoc_limitat %}<p class="stoc-limitat">Stoc limitat</p>{% endif %}
-        {% include 'ceaiuri/taguri_produs.html' %}
+        {% include 'ceaiuri/taguri_produs.html' with cale_taguri=request.path %}
     </li>
     {% empty %}
     <li>Nu există produse disponibile momentan.</li>

@@ -1,7 +1,8 @@
-{% if linkuri_taguri %}
+{% load catalog %}
+{% if produs.taguri %}
     <ul class="taguri" aria-label="Taguri produs">
-        {% for tag, adresa in linkuri_taguri %}
-            <li><a href="{{ adresa }}">{{ tag }}</a></li>
+        {% for tag in produs.taguri %}
+            <li><a href="{% url_tag cale_taguri parametri_catalog tag %}">{{ tag }}</a></li>
         {% endfor %}
     </ul>
 {% endif %}
