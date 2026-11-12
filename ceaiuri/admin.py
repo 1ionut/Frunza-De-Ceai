@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from django.utils.html import format_html
 
 from .models import Aroma, Categorie, Ceai, Raion, Sediu
 
@@ -65,10 +66,18 @@ class RaionAdmin(MesajeModelAdmin):
 class CeaiAdmin(MesajeModelAdmin):
     form = CeaiAdminForm
     list_display = (
-        "nume", "categorie", "gramaj_g", "pret", "intensitate", "ecologic", "data_adaugare"
+        "nume", "categorie", "gramaj_g", "pret_evidentiat", "intensitate", "ecologic", "data_adaugare"
     )
     list_filter = ("categorie", "intensitate", "ecologic", "tara_origine", "arome")
     search_fields = ("nume", "descriere", "tara_origine")
     list_select_related = ("categorie",)
     filter_horizontal = ("arome", "raioane")
     date_hierarchy = "data_adaugare"
+
+    @admin.display(description="Preț evidențiat", ordering="pret")
+    def pret_evidentiat(self, obj):
+        """Afișează prețul în verde și îngroșat în lista de ceaiuri."""
+        return format_html(
+            '<strong style="color: #2e7d32;">{} lei</strong>',
+            f"{obj.pret:.2f}",
+        )
