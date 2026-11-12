@@ -1,5 +1,7 @@
 from django import forms
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.core import serializers
+from django.http import HttpResponse
 from django.utils.html import format_html
 
 from .models import Aroma, Categorie, Ceai, Raion, Sediu
@@ -89,6 +91,7 @@ class CeaiAdmin(MesajeModelAdmin):
     list_per_page = 5
     filter_horizontal = ("arome", "raioane")
     date_hierarchy = "data_adaugare"
+    actions = ("exporta_json", "seteaza_intensitate_echilibrata")
 
     @admin.display(description="Preț evidențiat", ordering="pret")
     def pret_evidentiat(self, obj):
@@ -96,4 +99,23 @@ class CeaiAdmin(MesajeModelAdmin):
         return format_html(
             '<strong style="color: #2e7d32;">{} lei</strong>',
             f"{obj.pret:.2f}",
+        )
+
+    @admin.action(permissions=["view"], description="Exportă ceaiurile selectate în JSON")
+    def exporta_json(self, request, queryset):
+        raspuns = HttpResponse(
+            content_type="application/json",
+            headers={"Content-Disposition": 'attachment; filename="ceaiuri.json"'},
+        )
+        ceaiuri = queryset.prefetch_related("arome", "raioane")
+        serializers.serialize("json", ceaiuri.iterator(chunk_size=200), stream=raspuns, ensure_ascii=False)
+        return raspuns
+
+    @admin.action(permissions=["change"], description="Setează intensitatea la Echilibrată")
+    def seteaza_intensitate_echilibrata(self, request, queryset):
+        queryset.exclude(intensitate="echilibrata").update(intensitate="echilibrata")
+        self.message_user(
+            request,
+            "Intensitatea ceaiurilor selectate este acum Echilibrată.",
+            messages.SUCCESS,
         )
