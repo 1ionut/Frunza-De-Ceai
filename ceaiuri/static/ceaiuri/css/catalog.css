@@ -77,3 +77,25 @@
     display: grid;
     gap: 4px;
 }
+
+.sortare-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.sortare-catalog select,
+.sortare-catalog button {
+    padding: 6px 9px;
+    border: 1px solid #8aa491;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.sortare-catalog button {
+    background: #244b36;
+    color: #fff;
+    cursor: pointer;
+}

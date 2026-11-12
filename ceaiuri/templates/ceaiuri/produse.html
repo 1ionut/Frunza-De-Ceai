@@ -6,6 +6,20 @@
 
 {% block continut %}
 <h1>Produse</h1>
+<form method="get" class="sortare-catalog">
+    <label for="coloana">Sortează după</label>
+    <select id="coloana" name="coloana">
+        {% for valoare, eticheta in coloane_catalog.items %}
+            <option value="{{ valoare }}"{% if parametri_catalog.coloana == valoare %} selected{% endif %}>{{ eticheta }}</option>
+        {% endfor %}
+    </select>
+    <label for="sort">Ordine</label>
+    <select id="sort" name="sort">
+        <option value="a"{% if parametri_catalog.sort == 'a' %} selected{% endif %}>Crescător</option>
+        <option value="d"{% if parametri_catalog.sort == 'd' %} selected{% endif %}>Descrescător</option>
+    </select>
+    <button type="submit">Sortează</button>
+</form>
 <ul class="grila-produse">
     {% for produs in produse %}
     <li class="card-produs">
@@ -22,19 +36,19 @@
 {% if produse.has_other_pages %}
 <nav aria-label="Paginare produse">
     {% if produse.has_previous %}
-    <a href="?pagina={{ produse.previous_page_number }}">Anterior</a>
+    <a href="{% querystring parametri_catalog pagina=produse.previous_page_number %}">Anterior</a>
     {% endif %}
 
     {% for numar in numere_pagini %}
         {% if numar == produse.number %}
         <span aria-current="page">{{ numar }}</span>
         {% else %}
-        <a href="?pagina={{ numar }}">{{ numar }}</a>
+        <a href="{% querystring parametri_catalog pagina=numar %}">{{ numar }}</a>
         {% endif %}
     {% endfor %}
 
     {% if produse.has_next %}
-    <a href="?pagina={{ produse.next_page_number }}">Următor</a>
+    <a href="{% querystring parametri_catalog pagina=produse.next_page_number %}">Următor</a>
     {% endif %}
     <p>Pagina {{ produse.number }} din {{ produse.paginator.num_pages }}</p>
 </nav>

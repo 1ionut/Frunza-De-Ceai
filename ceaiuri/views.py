@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404, render
 from .accesari import accesari, formateaza_data_romana, Accesare
 from .models import Ceai
@@ -22,6 +22,13 @@ PAGINI = {
     "/produse": "Produse",
     "/contact": "Contact",
     "/cos_virtual": "Coș virtual",
+}
+
+COLOANE_CATALOG = {
+    "nume": "Nume",
+    "pret": "Preț",
+    "gramaj_g": "Gramaj",
+    "data_adaugare": "Data adăugării",
 }
 
 
@@ -51,12 +58,19 @@ def istoric(request):
 
 
 def produse(request):
-    ceaiuri = Ceai.objects.select_related("categorie").order_by("nume", "id")
-    paginator = Paginator(ceaiuri, 5)
+    parametri = QueryDict(mutable=True)
+    coloana = request.GET.get("coloana", "nume")
+    parametri["coloana"] = coloana if coloana in COLOANE_CATALOG else "nume"
+    parametri["sort"] = "d" if request.GET.get("sort") == "d" else "a"
+    prefix = "-" if parametri["sort"] == "d" else ""
+    ceaiuri = Ceai.objects.select_related("categorie")
+    paginator = Paginator(ceaiuri.order_by(prefix + parametri["coloana"], "pk"), 5)
     pagina = paginator.get_page(request.GET.get("pagina", 1))
     context = {
         "produse": pagina,
         "numere_pagini": range(1, paginator.num_pages + 1),
+        "parametri_catalog": parametri,
+        "coloane_catalog": COLOANE_CATALOG,
     }
     return render(request, "ceaiuri/produse.html", context)
 
