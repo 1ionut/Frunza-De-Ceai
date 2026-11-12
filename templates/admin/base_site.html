@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'ceaiuri/css/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+    <div id="site-name">
+        <a class="magazin-brand" href="{% url 'admin:index' %}">
+            <img src="{% static 'ceaiuri/imagini/ceasca.svg' %}" width="56" height="28" alt="">
+            {{ site_header }}
+        </a>
+    </div>
+    {% if user.is_anonymous %}
+        {% include "admin/color_theme_toggle.html" %}
+    {% endif %}
+{% endblock %}

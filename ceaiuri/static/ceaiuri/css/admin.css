@@ -1,0 +1,29 @@
+:root {
+    --header-bg: #254637;
+    --header-branding-color: #f6f3e7;
+    --breadcrumbs-fg: #e1ecd9;
+    --breadcrumbs-link-fg: #fff;
+    --magazin-sidebar-bg: #e5eddf;
+}
+
+:root[data-theme] {
+    --body-bg: light-dark(#f5f7ef, #181f19);
+    --breadcrumbs-bg: #385945;
+    --selected-row: light-dark(#d6e7bd, #394d30);
+    --magazin-sidebar-bg: light-dark(#e5eddf, #222e24);
+}
+
+#nav-sidebar,
+.toggle-nav-sidebar {
+    background-color: var(--magazin-sidebar-bg);
+}
+
+#site-name .magazin-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.magazin-brand img {
+    border-radius: 0.25rem;
+}
