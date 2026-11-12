@@ -69,6 +69,15 @@ class RaionAdmin(MesajeModelAdmin):
 @admin.register(Ceai)
 class CeaiAdmin(MesajeModelAdmin):
     form = CeaiAdminForm
+    fieldsets = (
+        ("Datele produsului", {
+            "fields": ("nume", "categorie", "gramaj_g", "pret", "intensitate", "ecologic", "data_adaugare"),
+        }),
+        ("Detalii opționale", {
+            "classes": ("collapse",),
+            "fields": ("descriere", "tara_origine", "recomandari_preparare", "imagine", "arome", "raioane"),
+        }),
+    )
     list_display = (
         "nume", "categorie", "gramaj_g", "pret_evidentiat", "intensitate", "ecologic", "data_adaugare"
     )
