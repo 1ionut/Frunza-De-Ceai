@@ -455,13 +455,13 @@ Din directorul proiectului, comanda de mai jos scrie 50 de comenzi în
 `ceaiuri_bonus.sql`, lângă `manage.py`.
 
 ```powershell
-python manage.py genereaza_inserturi_ceaiuri
+python genereaza_ceaiuri.py
 ```
 
 Generatorul folosește categoriile existente și variază numele, notele de gust,
 gramajul, prețul, intensitatea, statutul ecologic și recomandările de preparare.
-Poți schimba selecția cu `--seed`, numărul de produse cu `--numar` și calea cu
-`--fisier`. Generatorul folosește implicit seed-ul `2026`.
+Scriptul folosește `Random(2026)` ca să reproducă aceleași produse pentru
+aceleași categorii.
 
 Pentru import, deschide `ceaiuri_bonus.sql` în Query Tool din pgAdmin, conectat la
 baza proiectului, și execută întregul fișier. Comenzile `INSERT ... VALUES` rulează
