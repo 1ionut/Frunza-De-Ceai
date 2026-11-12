@@ -1,4 +1,5 @@
 from decimal import Decimal
+from unittest.mock import patch
 
 from django.test import TestCase, override_settings
 from django.urls import reverse
@@ -68,3 +69,14 @@ class CatalogTests(TestCase):
             self.client.get(reverse("ceaiuri:produs", kwargs={"id": 999999})),
             "Produsul căutat nu există.", status_code=404,
         )
+
+    def test_imaginea_produsului_si_fisierul_lipsa(self):
+        self.ceai.imagine = "ceaiuri/fotografie.jpg"
+        self.ceai.save(update_fields=["imagine"])
+        url = self.ceai.get_absolute_url()
+        with patch.object(self.ceai.imagine.storage, "exists", return_value=True):
+            self.assertContains(self.client.get(url), 'src="/media/ceaiuri/fotografie.jpg"')
+        with patch.object(self.ceai.imagine.storage, "exists", return_value=False):
+            raspuns = self.client.get(url)
+            self.assertNotContains(raspuns, 'src="/media/ceaiuri/fotografie.jpg"')
+            self.assertContains(raspuns, "Imagine indisponibilă")

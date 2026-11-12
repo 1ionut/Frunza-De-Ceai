@@ -5,6 +5,11 @@ from django.http import QueryDict
 register = template.Library()
 
 
+@register.filter
+def imagine_disponibila(imagine):
+    return bool(imagine and imagine.storage.exists(imagine.name))
+
+
 @register.simple_tag
 def url_tag(cale, parametri, tag, elimina=False):
     parametri = parametri.copy() if parametri else QueryDict(mutable=True)
