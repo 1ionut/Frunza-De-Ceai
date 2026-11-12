@@ -1,15 +1,19 @@
 {% extends 'ceaiuri/baza.html' %}
+{% load static %}
 
 {% block titlu %}Produse{% endblock %}
+{% block stiluri %}<link rel="stylesheet" href="{% static 'ceaiuri/css/catalog.css' %}">{% endblock %}
 
 {% block continut %}
 <h1>Produse</h1>
-<ul>
+<ul class="grila-produse">
     {% for produs in produse %}
-    <li>
+    <li class="card-produs">
+        {% include 'ceaiuri/imagine_produs.html' %}
+        <p class="categorie-produs">{{ produs.categorie.nume }}</p>
         <h2><a href="{% url 'ceaiuri:produs' produs.id %}">{{ produs.nume }}</a></h2>
-        <p>Categorie: {{ produs.categorie.nume }}</p>
-        <p>{{ produs.gramaj_g }} g · {{ produs.pret }} lei</p>
+        <p>{{ produs.gramaj_g }} g{% if produs.tara_origine %} · {{ produs.tara_origine }}{% endif %}</p>
+        <p class="pret-produs">{{ produs.pret }} lei</p>
     </li>
     {% empty %}
     <li>Nu există produse disponibile momentan.</li>

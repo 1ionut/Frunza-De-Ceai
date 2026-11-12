@@ -1,0 +1,9 @@
+{% load static %}
+{% if produs.imagine %}
+    <img class="imagine-produs" src="{{ produs.imagine.url }}" alt="{{ produs.nume }}" width="600" height="300">
+{% else %}
+    <div class="imagine-produs imagine-indisponibila">
+        <img src="{% static 'ceaiuri/imagini/ceasca.svg' %}" alt="" width="600" height="300">
+        <span>Imagine indisponibilă</span>
+    </div>
+{% endif %}
