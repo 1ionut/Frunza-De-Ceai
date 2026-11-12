@@ -1,5 +1,5 @@
-{% load static catalog %}
-{% if produs.imagine|imagine_disponibila %}
+{% load static %}
+{% if produs.are_imagine %}
     <img class="imagine-produs" src="{{ produs.imagine.url }}" alt="{{ produs.nume }}" width="600" height="300">
 {% else %}
     <div class="imagine-produs imagine-indisponibila">

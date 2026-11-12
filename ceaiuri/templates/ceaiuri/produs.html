@@ -29,8 +29,7 @@
         <dd>{% for recomandare in produs.recomandari_preparare %}{{ recomandare }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
         <dt>Taguri</dt>
         <dd>
-            {% url 'ceaiuri:produse' as cale_taguri %}
-            {% if produs.taguri %}{% include 'ceaiuri/taguri_produs.html' %}{% else %}Nespecificate{% endif %}
+            {% if linkuri_taguri %}{% include 'ceaiuri/taguri_produs.html' %}{% else %}Nespecificate{% endif %}
         </dd>
     </dl>
 </div>

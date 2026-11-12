@@ -156,6 +156,10 @@ class Ceai(models.Model):
     def stoc_limitat(self):
         return self.stoc < settings.STOC_MIN
 
+    @property
+    def are_imagine(self):
+        return bool(self.imagine and self.imagine.storage.exists(self.imagine.name))
+
     def clean(self):
         super().clean()
         try:

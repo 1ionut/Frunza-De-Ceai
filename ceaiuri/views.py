@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from .accesari import accesari, formateaza_data_romana, Accesare
 from .models import Categorie, Ceai
 
@@ -58,6 +59,22 @@ def istoric(request):
     return render(request, "ceaiuri/istoric.html")
 
 
+def adresa_cu_taguri(cale, parametri, taguri):
+    parametri = parametri.copy()
+    parametri.setlist("tag", taguri)
+    query = parametri.urlencode()
+    return f"{cale}?{query}" if query else cale
+
+
+def linkuri_taguri(cale, parametri, taguri_produs):
+    active = parametri.getlist("tag")
+    linkuri = []
+    for tag in taguri_produs:
+        taguri = active if tag in active else active + [tag]
+        linkuri.append((tag, adresa_cu_taguri(cale, parametri, taguri)))
+    return linkuri
+
+
 def produse(request, slug=None):
     categorie = get_object_or_404(Categorie, slug=slug) if slug is not None else None
     parametri = QueryDict(mutable=True)
@@ -77,10 +94,14 @@ def produse(request, slug=None):
     pagina = paginator.get_page(request.GET.get("pagina", 1))
     context = {
         "produse": pagina,
+        "carduri": [(ceai, linkuri_taguri(request.path, parametri, ceai.taguri)) for ceai in pagina],
         "categorie": categorie,
         "parametri_catalog": parametri,
         "coloane_catalog": COLOANE_CATALOG,
-        "taguri_active": taguri,
+        "taguri_active": [
+            (tag, adresa_cu_taguri(request.path, parametri, [valoare for valoare in taguri if valoare != tag]))
+            for tag in taguri
+        ],
     }
     return render(request, "ceaiuri/produse.html", context)
 
@@ -95,6 +116,7 @@ def produs(request, id):
     similare = Ceai.objects.filter(categorie=ceai.categorie).exclude(pk=ceai.pk)
     return render(request, "ceaiuri/produs.html", {
         "produs": ceai,
+        "linkuri_taguri": linkuri_taguri(reverse("ceaiuri:produse"), QueryDict(), ceai.taguri),
         "similare": similare.order_by("?")[:settings.PRODUSE_SIMILARE],
     })
 
