@@ -1,4 +1,3 @@
-from collections import defaultdict
 from decimal import Decimal
 from pathlib import Path
 from random import Random
@@ -17,10 +16,10 @@ INSERT_CEAI = """INSERT INTO ceaiuri_ceai (
     nume, descriere, tara_origine, gramaj_g, pret, intensitate, ecologic,
     data_adaugare, recomandari_preparare, categorie_id
 )
-SELECT %s, %s, %s, %s, %s, %s, %s,
-       CURRENT_TIMESTAMP - make_interval(days => %s), %s,
-       (SELECT id FROM ceaiuri_categorie WHERE slug = %s)
-WHERE NOT EXISTS (SELECT 1 FROM ceaiuri_ceai WHERE nume = %s);"""
+SELECT %(nume)s, %(descriere)s, %(origine)s, %(gramaj)s, %(pret)s, %(intensitate)s, %(ecologic)s,
+       CURRENT_TIMESTAMP - make_interval(days => %(zile)s), %(recomandari)s,
+       (SELECT id FROM ceaiuri_categorie WHERE slug = %(slug)s)
+WHERE NOT EXISTS (SELECT 1 FROM ceaiuri_ceai WHERE nume = %(nume)s);"""
 
 NOTE = ("bergamotă", "coajă de portocală", "iasomie", "mentă", "piersică", "vanilie")
 GRAMAJE = (25, 40, 50, 75, 100, 150, 200, 250)
@@ -31,8 +30,8 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--numar", type=int, default=50, help="Numărul de ceaiuri generate.")
-        parser.add_argument("--seed", type=int, help="Valoare pentru a reproduce același lot.")
-        parser.add_argument("--fisier", type=Path, help="Calea fișierului SQL scris în UTF-8.")
+        parser.add_argument("--seed", type=int, default=2026, help="Schimbă lotul generat.")
+        parser.add_argument("--fisier", type=Path, default=Path("ceaiuri_bonus.sql"), help="Fișierul SQL rezultat.")
 
     def handle(self, *args, numar, seed, fisier, **options):
         if numar < 1:
@@ -44,48 +43,41 @@ class Command(BaseCommand):
         if not categorii:
             raise CommandError("Adaugă cel puțin o categorie înainte de a genera ceaiuri.")
 
-        profiluri = defaultdict(list)
-        for nume, categorie, origine, *_ in CEAIURI:
-            profiluri[categorie].append((nume, origine))
-
         rng = Random(seed)
         lot = f"{rng.getrandbits(48):012x}"
         intensitati = [valoare for valoare, _ in Ceai._meta.get_field("intensitate").choices]
         rng.shuffle(categorii)
 
-        # Tranzacția aplică lotul integral. Blocarea evită dublurile dacă același lot se importă simultan.
+        # Aplică întregul lot într-o tranzacție și evită importurile simultane.
         comenzi = ["BEGIN;", "LOCK TABLE ceaiuri_ceai IN SHARE ROW EXCLUSIVE MODE;"]
         with ClientCursor(connection.connection) as cursor:
             for index in range(numar):
                 slug, categorie = categorii[index % len(categorii)]
-                baza, origine = rng.choice(profiluri[categorie] or [(categorie, None)])
-                nota = rng.choice(NOTE)
-                nume = f"{baza} cu note de {nota} · lot {lot}-{index + 1:03d}"
-                gramaj = rng.choice(GRAMAJE)
-                pret = Decimal(rng.randint(8 * gramaj + 800, 22 * gramaj + 2000)) / 100
-                recomandari = [
-                    f"Apă la {rng.choice((75, 80, 85, 90, 95))}°C",
-                    f"Infuzare {rng.randint(2, 6)} minute",
+                profiluri = [
+                    (nume, origine)
+                    for nume, tip, origine, *_ in CEAIURI
+                    if tip == categorie
                 ]
-                valori = (
-                    nume,
-                    f"{categorie}, cu note de {nota}. Pachet de {gramaj} g.",
-                    origine,
-                    gramaj,
-                    pret,
-                    rng.choice(intensitati),
-                    rng.choice((True, False)),
-                    rng.randint(0, 365),
-                    Jsonb(recomandari),
-                    slug,
-                    nume,
-                )
+                baza, origine = rng.choice(profiluri or [(categorie, None)])
+                nota = rng.choice(NOTE)
+                gramaj = rng.choice(GRAMAJE)
+                pret_bani = rng.randint(8 * gramaj + 800, 22 * gramaj + 2000)
+                temperatura = rng.choice((75, 80, 85, 90, 95))
+                minute = rng.randint(2, 6)
+                valori = {
+                    "nume": f"{baza} cu note de {nota} · lot {lot}-{index + 1:03d}",
+                    "descriere": f"{categorie}, cu note de {nota}. Pachet de {gramaj} g.",
+                    "origine": origine,
+                    "gramaj": gramaj,
+                    "pret": Decimal(pret_bani) / 100,
+                    "intensitate": rng.choice(intensitati),
+                    "ecologic": rng.choice((True, False)),
+                    "zile": rng.randint(0, 365),
+                    "recomandari": Jsonb([f"Apă la {temperatura}°C", f"Infuzare {minute} minute"]),
+                    "slug": slug,
+                }
                 comenzi.append(cursor.mogrify(INSERT_CEAI, valori))
         comenzi.append("COMMIT;")
 
-        script = "\n\n".join(comenzi) + "\n"
-        if fisier is None:
-            self.stdout.write(script)
-        else:
-            fisier.write_text(script, encoding="utf-8")
-            self.stdout.write(f"Am generat {numar} comenzi INSERT în {fisier}.")
+        fisier.write_text("\n\n".join(comenzi) + "\n", encoding="utf-8")
+        self.stdout.write(f"Am generat {numar} comenzi INSERT în {fisier.resolve()}.")

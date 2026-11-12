@@ -451,16 +451,17 @@ Mesajul commitului pentru încărcarea fișierelor este `add files`.
 
 ## Laboratorul 4 — Bonus: generarea comenzilor INSERT
 
-Din directorul proiectului, comanda de mai jos generează un fișier SQL în UTF-8.
+Din directorul proiectului, comanda de mai jos scrie 50 de comenzi în
+`ceaiuri_bonus.sql`, lângă `manage.py`.
 
 ```powershell
-python manage.py genereaza_inserturi_ceaiuri --numar 50 --seed 2026 --fisier ceaiuri_bonus.sql
+python manage.py genereaza_inserturi_ceaiuri
 ```
 
 Generatorul folosește categoriile existente și variază numele, notele de gust,
 gramajul, prețul, intensitatea, statutul ecologic și recomandările de preparare.
-Parametrul `--seed` permite reproducerea lotului pentru aceleași categorii.
-Fără `--fisier`, comenzile sunt afișate în terminal.
+Poți schimba lotul cu `--seed`, numărul de produse cu `--numar` și calea cu
+`--fisier`. Generatorul folosește implicit seed-ul `2026`.
 
 Pentru import, deschide `ceaiuri_bonus.sql` în Query Tool din pgAdmin, conectat la
 baza proiectului, și execută întregul fișier. Comenzile rulează într-o tranzacție.
