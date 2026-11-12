@@ -72,7 +72,7 @@ class CeaiAdmin(MesajeModelAdmin):
     list_display = (
         "nume", "categorie", "gramaj_g", "pret_evidentiat", "intensitate", "ecologic", "data_adaugare"
     )
-    list_filter = ("categorie", "intensitate", "ecologic", "tara_origine", "arome")
+    list_filter = ("categorie", "intensitate", "ecologic", "tara_origine", "arome", "raioane")
     search_fields = ("nume", "descriere")
     search_help_text = "Caută un ceai după nume sau descriere."
     list_select_related = ("categorie",)
