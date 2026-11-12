@@ -77,6 +77,7 @@ class CeaiAdmin(MesajeModelAdmin):
     search_help_text = "Caută un ceai după nume sau descriere."
     list_select_related = ("categorie",)
     ordering = ("pret", "pk")
+    list_per_page = 5
     filter_horizontal = ("arome", "raioane")
     date_hierarchy = "data_adaugare"
 
