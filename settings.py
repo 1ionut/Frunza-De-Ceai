@@ -8,13 +8,13 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
 ROOT_URLCONF = "urls"
 
 INSTALLED_APPS = [
+    "ceaiuri.apps.CeaiuriConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "ceaiuri.apps.CeaiuriConfig",
 ]
 
 MIDDLEWARE = [
@@ -49,7 +49,7 @@ USE_I18N = True
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
