@@ -202,3 +202,20 @@ class ModeleSiAdministrareTests(TestCase):
             raspuns, "Denumirea ceaiului poate avea cel mult 200 de caractere."
         )
         self.assertFalse(Ceai.objects.exists())
+
+    def test_lab4_pret_evidentiat_in_lista_admin(self):
+        admin_ceai = admin.site._registry[Ceai]
+        self.assertIn("pret_evidentiat", admin_ceai.list_display)
+        self.assertNotIn("pret", admin_ceai.list_display)
+        self.assertEqual(admin_ceai.pret_evidentiat.admin_order_field, "pret")
+        self.assertEqual(admin_ceai.pret_evidentiat.short_description, "Preț evidențiat")
+
+        ceai = self.creeaza_ceai()
+        rezultat = str(admin_ceai.pret_evidentiat(ceai))
+        self.assertIn('<strong style="color: #2e7d32;">', rezultat)
+        self.assertIn("24.50 lei</strong>", rezultat)
+
+        self.client.force_login(self.administrator)
+        raspuns = self.client.get(reverse("admin:ceaiuri_ceai_changelist"))
+        self.assertContains(raspuns, "Preț evidențiat")
+        self.assertContains(raspuns, "24.50 lei")
