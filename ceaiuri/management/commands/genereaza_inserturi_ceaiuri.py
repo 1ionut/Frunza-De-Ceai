@@ -16,21 +16,22 @@ INSERT_CEAI = """INSERT INTO ceaiuri_ceai (
     nume, descriere, tara_origine, gramaj_g, pret, intensitate, ecologic,
     data_adaugare, recomandari_preparare, categorie_id
 )
-SELECT %(nume)s, %(descriere)s, %(origine)s, %(gramaj)s, %(pret)s, %(intensitate)s, %(ecologic)s,
-       CURRENT_TIMESTAMP - make_interval(days => %(zile)s), %(recomandari)s,
-       (SELECT id FROM ceaiuri_categorie WHERE slug = %(slug)s)
-WHERE NOT EXISTS (SELECT 1 FROM ceaiuri_ceai WHERE nume = %(nume)s);"""
+VALUES (
+    %s, %s, %s, %s, %s, %s, %s,
+    CURRENT_TIMESTAMP - make_interval(days => %s), %s,
+    (SELECT id FROM ceaiuri_categorie WHERE slug = %s)
+);"""
 
 NOTE = ("bergamotă", "coajă de portocală", "iasomie", "mentă", "piersică", "vanilie")
 GRAMAJE = (25, 40, 50, 75, 100, 150, 200, 250)
 
 
 class Command(BaseCommand):
-    help = "Generează comenzi SQL INSERT pentru un lot aleator de ceaiuri."
+    help = "Generează comenzi SQL INSERT pentru ceaiuri aleatoare."
 
     def add_arguments(self, parser):
         parser.add_argument("--numar", type=int, default=50, help="Numărul de ceaiuri generate.")
-        parser.add_argument("--seed", type=int, default=2026, help="Schimbă lotul generat.")
+        parser.add_argument("--seed", type=int, default=2026, help="Schimbă selecția aleatoare.")
         parser.add_argument("--fisier", type=Path, default=Path("ceaiuri_bonus.sql"), help="Fișierul SQL rezultat.")
 
     def handle(self, *args, numar, seed, fisier, **options):
@@ -39,43 +40,34 @@ class Command(BaseCommand):
         if connection.vendor != "postgresql":
             raise CommandError("Generatorul produce comenzi SQL pentru PostgreSQL.")
 
-        categorii = list(Categorie.objects.order_by("slug").values_list("slug", "nume"))
-        if not categorii:
+        variante = []
+        for slug, categorie in Categorie.objects.order_by("slug").values_list("slug", "nume"):
+            soiuri = [(nume, origine) for nume, tip, origine, *_ in CEAIURI if tip == categorie]
+            for nume, origine in soiuri or [(categorie, None)]:
+                variante.extend((nume, nota, origine, slug) for nota in NOTE)
+        if not variante:
             raise CommandError("Adaugă cel puțin o categorie înainte de a genera ceaiuri.")
 
         rng = Random(seed)
-        lot = f"{rng.getrandbits(48):012x}"
+        rng.shuffle(variante)
         intensitati = [valoare for valoare, _ in Ceai._meta.get_field("intensitate").choices]
-        rng.shuffle(categorii)
 
-        # Aplică întregul lot într-o tranzacție și evită importurile simultane.
-        comenzi = ["BEGIN;", "LOCK TABLE ceaiuri_ceai IN SHARE ROW EXCLUSIVE MODE;"]
+        comenzi = ["BEGIN;"]
         with ClientCursor(connection.connection) as cursor:
             for index in range(numar):
-                slug, categorie = categorii[index % len(categorii)]
-                profiluri = [
-                    (nume, origine)
-                    for nume, tip, origine, *_ in CEAIURI
-                    if tip == categorie
-                ]
-                baza, origine = rng.choice(profiluri or [(categorie, None)])
-                nota = rng.choice(NOTE)
-                gramaj = rng.choice(GRAMAJE)
-                pret_bani = rng.randint(8 * gramaj + 800, 22 * gramaj + 2000)
-                temperatura = rng.choice((75, 80, 85, 90, 95))
-                minute = rng.randint(2, 6)
-                valori = {
-                    "nume": f"{baza} cu note de {nota} · lot {lot}-{index + 1:03d}",
-                    "descriere": f"{categorie}, cu note de {nota}. Pachet de {gramaj} g.",
-                    "origine": origine,
-                    "gramaj": gramaj,
-                    "pret": Decimal(pret_bani) / 100,
-                    "intensitate": rng.choice(intensitati),
-                    "ecologic": rng.choice((True, False)),
-                    "zile": rng.randint(0, 365),
-                    "recomandari": Jsonb([f"Apă la {temperatura}°C", f"Infuzare {minute} minute"]),
-                    "slug": slug,
-                }
+                nume, nota, origine, slug = variante[index % len(variante)]
+                valori = (
+                    f"{nume} cu note de {nota}",
+                    f"Ceai cu note de {nota}.",
+                    origine,
+                    rng.choice(GRAMAJE),
+                    Decimal(rng.randint(1200, 9900)) / 100,
+                    rng.choice(intensitati),
+                    rng.choice((True, False)),
+                    rng.randint(0, 365),
+                    Jsonb([f"Infuzare {rng.randint(2, 6)} minute"]),
+                    slug,
+                )
                 comenzi.append(cursor.mogrify(INSERT_CEAI, valori))
         comenzi.append("COMMIT;")
 

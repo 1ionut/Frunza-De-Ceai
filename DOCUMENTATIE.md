@@ -460,9 +460,9 @@ python manage.py genereaza_inserturi_ceaiuri
 
 Generatorul folosește categoriile existente și variază numele, notele de gust,
 gramajul, prețul, intensitatea, statutul ecologic și recomandările de preparare.
-Poți schimba lotul cu `--seed`, numărul de produse cu `--numar` și calea cu
+Poți schimba selecția cu `--seed`, numărul de produse cu `--numar` și calea cu
 `--fisier`. Generatorul folosește implicit seed-ul `2026`.
 
 Pentru import, deschide `ceaiuri_bonus.sql` în Query Tool din pgAdmin, conectat la
-baza proiectului, și execută întregul fișier. Comenzile rulează într-o tranzacție.
-Rularea repetată a aceluiași fișier sare peste ceaiurile din lot deja prezente.
+baza proiectului, și execută întregul fișier. Comenzile `INSERT ... VALUES` rulează
+într-o tranzacție. Fiecare import adaugă produsele din fișier.
