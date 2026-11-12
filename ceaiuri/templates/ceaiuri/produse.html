@@ -6,8 +6,10 @@
 
 {% block continut %}
 {% if categorie %}
-    <h1>{{ categorie.nume }}</h1>
-    {{ categorie.descriere|linebreaks }}
+    <section class="antet-categorie" style="--culoare-categorie: {{ categorie.culoare }};">
+        <h1>{% include 'ceaiuri/sigla_categorie.html' %} {{ categorie.nume }}</h1>
+        {{ categorie.descriere|linebreaks }}
+    </section>
 {% else %}
     <h1>Produse</h1>
 {% endif %}
@@ -44,9 +46,9 @@
 {% endif %}
 <ul class="grila-produse">
     {% for produs in produse %}
-    <li class="card-produs">
+    <li class="card-produs" style="--culoare-categorie: {{ produs.categorie.culoare }};">
         {% include 'ceaiuri/imagine_produs.html' %}
-        <p class="categorie-produs">{{ produs.categorie.nume }}</p>
+        <p class="categorie-produs">{% include 'ceaiuri/link_categorie.html' with categorie=produs.categorie %}</p>
         <h2><a href="{{ produs.get_absolute_url }}">{{ produs.nume }}</a></h2>
         <p>{{ produs.gramaj_g }} g{% if produs.tara_origine %} · {{ produs.tara_origine }}{% endif %}</p>
         <p class="pret-produs">{{ produs.pret }} lei</p>

@@ -1,0 +1,8 @@
+{% load static %}
+{% if '/' in categorie.sigla %}
+    <img class="sigla-categorie" src="{% static categorie.sigla %}" alt="" width="32" height="32">
+{% elif categorie.sigla|slice:':3' == 'fa-' %}
+    <span class="sigla-categorie" aria-hidden="true">🍃</span>
+{% else %}
+    <span class="sigla-categorie" aria-hidden="true">{{ categorie.sigla }}</span>
+{% endif %}

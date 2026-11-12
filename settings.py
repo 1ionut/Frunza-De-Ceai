@@ -57,6 +57,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "ceaiuri.context_processors.date_firma",
+                "ceaiuri.context_processors.categorii_meniu",
             ],
         },
     },

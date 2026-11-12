@@ -3,7 +3,7 @@ from datetime import datetime
 from io import StringIO
 from zoneinfo import ZoneInfo
 
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 
 from .accesari import Accesare, formateaza_data_romana
 from .views import DESCRIERE
@@ -54,8 +54,8 @@ class AccesareTests(SimpleTestCase):
             self.assertIn(camp + ": ", text)
 
 
-class PaginiTests(SimpleTestCase):
-    def test_pagini_middleware_si_loguri_fara_baza_de_date(self):
+class PaginiTests(TestCase):
+    def test_pagini_middleware_si_loguri(self):
         for url in ("/", "/info", "/info?data=zi", "/info?data=timp", "/info?data="):
             with self.subTest(url=url), redirect_stdout(StringIO()) as consola:
                 response = self.client.get(url, REMOTE_ADDR="192.0.2.10")

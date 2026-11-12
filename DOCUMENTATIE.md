@@ -466,3 +466,14 @@ cu slugurile din lista `SOIURI`.
 Pentru import, deschide `ceaiuri_bonus.sql` în Query Tool din pgAdmin, conectat la
 baza proiectului, și execută întregul fișier. Comenzile `INSERT ... VALUES` rulează
 într-o tranzacție. Fiecare import adaugă produsele din fișier.
+
+## Laboratorul 4 — Catalogul de produse
+
+După `python manage.py migrate`, catalogul se găsește la `/produse`. De exemplu,
+`/produse?coloana=pret&sort=d&tag=floral&tag=ecologic` afișează ceaiurile cu ambele
+taguri, de la prețul cel mai mare la cel mai mic. Categoriile folosesc aceeași
+funcție și același șablon, la adrese precum `/categorii/ceai-verde`.
+
+`PROD_PER_PAG`, `STOC_MIN` și `PRODUSE_SIMILARE` se configurează în `settings.py`.
+Stocul și tagurile se editează în formularul unui ceai din admin. Meniul
+„Categorii” se actualizează în funcție de categoriile care au produse.

@@ -27,6 +27,16 @@
                 <li><a href="{% url 'ceaiuri:despre' %}">Despre</a></li>
                 <li><a href="{% url 'ceaiuri:istoric' %}">Istoric</a></li>
                 <li><a href="{% url 'ceaiuri:produse' %}">Produse</a></li>
+                <li>
+                    <a href="{% url 'ceaiuri:produse' %}">Categorii{% if categorii_meniu %} ▾{% endif %}</a>
+                    {% if categorii_meniu %}
+                        <ul>
+                            {% for categorie_meniu in categorii_meniu %}
+                                <li><a href="{{ categorie_meniu.get_absolute_url }}">{{ categorie_meniu.nume }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
                 <li><a href="{% url 'ceaiuri:contact' %}">Contact</a></li>
                 <li><a href="{% url 'ceaiuri:cos_virtual' %}">Coș virtual</a></li>
                 <li>

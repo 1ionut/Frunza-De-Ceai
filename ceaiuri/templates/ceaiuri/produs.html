@@ -13,7 +13,7 @@
         {% if produs.descriere %}{{ produs.descriere|linebreaks }}{% endif %}
     </div>
     <dl>
-        <dt>Categorie</dt><dd>{{ produs.categorie.nume }}</dd>
+        <dt>Categorie</dt><dd>{% include 'ceaiuri/link_categorie.html' with categorie=produs.categorie %}</dd>
         <dt>Țara de origine</dt><dd>{{ produs.tara_origine|default:'Nespecificată' }}</dd>
         <dt>Gramaj</dt><dd>{{ produs.gramaj_g }} g</dd>
         <dt>Preț</dt><dd>{{ produs.pret }} lei</dd>
@@ -38,7 +38,7 @@
     <h2 id="titlu-similare">Produse din aceeași categorie</h2>
     <ul class="grila-produse">
         {% for produs in similare %}
-            <li class="card-produs">
+            <li class="card-produs" style="--culoare-categorie: {{ produs.categorie.culoare }};">
                 <a class="link-produs-similar" href="{{ produs.get_absolute_url }}">
                     {% include 'ceaiuri/imagine_produs.html' %}
                     <strong>{{ produs.nume }}</strong>

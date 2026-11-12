@@ -10,6 +10,7 @@
     padding: 14px;
     background: #fff;
     border: 1px solid #c8d5ca;
+    border-top: 4px solid var(--culoare-categorie, #c8d5ca);
     border-radius: 12px;
     overflow-wrap: anywhere;
 }
@@ -26,6 +27,36 @@
 
 .categorie-produs {
     font-size: 0.9rem;
+}
+
+.marca-categorie {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 7px;
+    border-inline-start: 4px solid var(--culoare-categorie);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--culoare-categorie) 17%, white);
+    color: #243b2c;
+}
+
+.sigla-categorie {
+    display: inline-block;
+    width: 1.35em;
+    height: 1.35em;
+    text-align: center;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.antet-categorie {
+    border-inline-start: 5px solid var(--culoare-categorie);
+    background: color-mix(in srgb, var(--culoare-categorie) 14%, white);
+}
+
+.antet-categorie h1,
+.antet-categorie p:last-child {
+    margin: 0;
 }
 
 .pret-produs {

@@ -25,8 +25,8 @@ class Categorie(models.Model):
     descriere = models.TextField("descriere")
     culoare = models.CharField("culoare", max_length=7, default="#52734D",
         help_text="Culoarea reprezentativă în format hexazecimal #RRGGBB, de exemplu #52734D.")
-    sigla = models.CharField("siglă", max_length=200, default="fa-solid fa-leaf",
-        help_text="Calea unei imagini sau clasele unei pictograme, de exemplu fa-solid fa-leaf.")
+    sigla = models.CharField("siglă", max_length=200, default="🍃",
+        help_text="O pictogramă, de exemplu 🍃, sau calea unei imagini statice.")
     vizibila = models.BooleanField("vizibilă în catalog", default=True)
 
     class Meta:

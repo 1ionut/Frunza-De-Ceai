@@ -1,20 +1,15 @@
 from contextlib import redirect_stdout
 from datetime import datetime
 from io import StringIO
-from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
-from django.test import SimpleTestCase
+from django.test import TestCase
 
 from .accesari import Accesare, accesari
-from .models import Ceai
 
 
-class LogTests(SimpleTestCase):
+class LogTests(TestCase):
     def setUp(self):
-        catalog = patch("ceaiuri.views.Ceai.objects.select_related", return_value=Ceai.objects.none())
-        catalog.start()
-        self.addCleanup(catalog.stop)
         accesari.clear()
         Accesare.ultimul_id = 0
 
