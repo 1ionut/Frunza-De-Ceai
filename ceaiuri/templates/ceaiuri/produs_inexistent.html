@@ -1,0 +1,9 @@
+{% extends 'ceaiuri/baza.html' %}
+
+{% block titlu %}Produs inexistent{% endblock %}
+
+{% block continut %}
+<h1>Produs inexistent</h1>
+<p class="eroare">Produsul căutat nu există.</p>
+<p><a href="{% url 'ceaiuri:produse' %}">Înapoi la produse</a></p>
+{% endblock %}

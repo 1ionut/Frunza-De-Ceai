@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
@@ -61,8 +62,17 @@ def produse(request):
 
 
 def produs(request, id):
-    ceai = get_object_or_404(Ceai.objects.select_related("categorie"), pk=id)
-    return render(request, "ceaiuri/produs.html", {"produs": ceai})
+    ceaiuri = Ceai.objects.select_related("categorie").prefetch_related("arome", "raioane__sediu")
+    try:
+        ceai = get_object_or_404(ceaiuri, pk=id)
+    except Http404:
+        return render(request, "ceaiuri/produs_inexistent.html", status=404)
+
+    similare = Ceai.objects.filter(categorie=ceai.categorie).exclude(pk=ceai.pk)
+    return render(request, "ceaiuri/produs.html", {
+        "produs": ceai,
+        "similare": similare.order_by("?")[:settings.PRODUSE_SIMILARE],
+    })
 
 
 def in_lucru(request, nume_pagina):

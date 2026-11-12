@@ -1,17 +1,47 @@
 {% extends 'ceaiuri/baza.html' %}
+{% load static %}
 
 {% block titlu %}{{ produs.nume }}{% endblock %}
+{% block stiluri %}<link rel="stylesheet" href="{% static 'ceaiuri/css/catalog.css' %}">{% endblock %}
 
 {% block continut %}
-<h1>{{ produs.nume }}</h1>
-{{ produs.descriere|linebreaks }}
-<dl>
-    <dt>Categorie</dt><dd>{{ produs.categorie.nume }}</dd>
-    <dt>Țara de origine</dt><dd>{{ produs.tara_origine }}</dd>
-    <dt>Gramaj</dt><dd>{{ produs.gramaj_g }} g</dd>
-    <dt>Preț</dt><dd>{{ produs.pret }} lei</dd>
-    <dt>Ecologic</dt><dd>{{ produs.ecologic|yesno:"Da,Nu" }}</dd>
-    <dt>Data adăugării</dt><dd>{{ produs.data_adaugare|date:"d.m.Y" }}</dd>
-</dl>
 <p><a href="{% url 'ceaiuri:produse' %}">Înapoi la produse</a></p>
+<h1>{{ produs.nume }}</h1>
+<div class="detalii-produs">
+    <div>
+        {% include 'ceaiuri/imagine_produs.html' %}
+        {% if produs.descriere %}{{ produs.descriere|linebreaks }}{% endif %}
+    </div>
+    <dl>
+        <dt>Categorie</dt><dd>{{ produs.categorie.nume }}</dd>
+        <dt>Țara de origine</dt><dd>{{ produs.tara_origine|default:'Nespecificată' }}</dd>
+        <dt>Gramaj</dt><dd>{{ produs.gramaj_g }} g</dd>
+        <dt>Preț</dt><dd>{{ produs.pret }} lei</dd>
+        <dt>Intensitate</dt><dd>{{ produs.get_intensitate_display }}</dd>
+        <dt>Ecologic</dt><dd>{{ produs.ecologic|yesno:"Da,Nu" }}</dd>
+        <dt>Data adăugării</dt><dd>{{ produs.data_adaugare|date:"d.m.Y H:i" }}</dd>
+        <dt>Arome</dt>
+        <dd>{% for aroma in produs.arome.all %}{{ aroma.nume }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
+        <dt>Raioane de expunere</dt>
+        <dd>{% for raion in produs.raioane.all %}{{ raion }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
+        <dt>Recomandări de preparare</dt>
+        <dd>{% for recomandare in produs.recomandari_preparare %}{{ recomandare }}{% if not forloop.last %}, {% endif %}{% empty %}Nespecificate{% endfor %}</dd>
+    </dl>
+</div>
+<section aria-labelledby="titlu-similare">
+    <h2 id="titlu-similare">Produse din aceeași categorie</h2>
+    <ul class="grila-produse">
+        {% for produs in similare %}
+            <li class="card-produs">
+                <a class="link-produs-similar" href="{{ produs.get_absolute_url }}">
+                    {% include 'ceaiuri/imagine_produs.html' %}
+                    <strong>{{ produs.nume }}</strong>
+                    <span>{{ produs.pret }} lei</span>
+                </a>
+            </li>
+        {% empty %}
+            <li>Nu mai sunt alte produse în această categorie.</li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}

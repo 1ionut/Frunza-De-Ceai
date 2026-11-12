@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -139,6 +140,9 @@ class Ceai(models.Model):
 
     def __str__(self):
         return f"{self.nume} ({self.gramaj_g} g)"
+
+    def get_absolute_url(self):
+        return reverse("ceaiuri:produs", kwargs={"id": self.pk})
 
     def clean(self):
         super().clean()

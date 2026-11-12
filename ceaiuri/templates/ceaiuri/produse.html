@@ -11,7 +11,7 @@
     <li class="card-produs">
         {% include 'ceaiuri/imagine_produs.html' %}
         <p class="categorie-produs">{{ produs.categorie.nume }}</p>
-        <h2><a href="{% url 'ceaiuri:produs' produs.id %}">{{ produs.nume }}</a></h2>
+        <h2><a href="{{ produs.get_absolute_url }}">{{ produs.nume }}</a></h2>
         <p>{{ produs.gramaj_g }} g{% if produs.tara_origine %} · {{ produs.tara_origine }}{% endif %}</p>
         <p class="pret-produs">{{ produs.pret }} lei</p>
     </li>
