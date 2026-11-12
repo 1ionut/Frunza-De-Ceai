@@ -1,0 +1,18 @@
+<nav class="paginare-catalog" aria-label="{{ eticheta }}">
+    <span>Pagina {{ produse.number }} din {{ produse.paginator.num_pages }}</span>
+    {% if produse.has_previous %}
+        <a href="{% querystring parametri_catalog pagina=produse.previous_page_number %}">Anterior</a>
+    {% endif %}
+    {% if produse.has_other_pages %}
+        {% for numar in produse.paginator.page_range %}
+            {% if numar == produse.number %}
+                <span aria-current="page">{{ numar }}</span>
+            {% else %}
+                <a href="{% querystring parametri_catalog pagina=numar %}">{{ numar }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if produse.has_next %}
+        <a href="{% querystring parametri_catalog pagina=produse.next_page_number %}">Următor</a>
+    {% endif %}
+</nav>

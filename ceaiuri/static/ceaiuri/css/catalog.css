@@ -123,6 +123,26 @@
     color: #fff;
 }
 
+.paginare-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 14px 0;
+}
+
+.paginare-catalog a,
+.paginare-catalog [aria-current] {
+    padding: 1px 8px;
+    border-radius: 5px;
+    background: #e9eddf;
+}
+
+.paginare-catalog [aria-current] {
+    background: #244b36;
+    color: #fff;
+}
+
 .sortare-catalog button {
     background: #244b36;
     color: #fff;

@@ -11,6 +11,7 @@ urlpatterns = [
     path("despre", views.despre, name="despre"),
     path("istoric", views.istoric, name="istoric"),
     path("produse", views.produse, name="produse"),
+    path("categorii/<slug:slug>", views.produse, name="categorie"),
     path("produs/<int:id>", views.produs, name="produs"),
     path("contact", views.in_lucru, {"nume_pagina": "Contact"}, name="contact"),
     path("cos_virtual", views.in_lucru, {"nume_pagina": "Coș virtual"}, name="cos_virtual"),

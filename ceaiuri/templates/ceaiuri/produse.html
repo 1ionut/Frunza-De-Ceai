@@ -1,11 +1,16 @@
 {% extends 'ceaiuri/baza.html' %}
 {% load static catalog %}
 
-{% block titlu %}Produse{% endblock %}
+{% block titlu %}{% if categorie %}{{ categorie.nume }}{% else %}Produse{% endif %}{% endblock %}
 {% block stiluri %}<link rel="stylesheet" href="{% static 'ceaiuri/css/catalog.css' %}">{% endblock %}
 
 {% block continut %}
-<h1>Produse</h1>
+{% if categorie %}
+    <h1>{{ categorie.nume }}</h1>
+    {{ categorie.descriere|linebreaks }}
+{% else %}
+    <h1>Produse</h1>
+{% endif %}
 <form method="get" class="sortare-catalog">
     {% for tag in taguri_active %}<input type="hidden" name="tag" value="{{ tag }}">{% endfor %}
     <label for="coloana">Sortează după</label>
@@ -31,6 +36,12 @@
         </ul>
     </div>
 {% endif %}
+{% include 'ceaiuri/paginare_catalog.html' with eticheta='Paginare înainte de produse' %}
+{% if produse.paginator.count %}
+    <p>Se afișează produsele între {{ produse.start_index }} și {{ produse.end_index }} din totalul de {{ produse.paginator.count }} produse.</p>
+{% else %}
+    <p>Se afișează 0 produse.</p>
+{% endif %}
 <ul class="grila-produse">
     {% for produs in produse %}
     <li class="card-produs">
@@ -46,24 +57,5 @@
     <li>Nu există produse disponibile momentan.</li>
     {% endfor %}
 </ul>
-{% if produse.has_other_pages %}
-<nav aria-label="Paginare produse">
-    {% if produse.has_previous %}
-    <a href="{% querystring parametri_catalog pagina=produse.previous_page_number %}">Anterior</a>
-    {% endif %}
-
-    {% for numar in numere_pagini %}
-        {% if numar == produse.number %}
-        <span aria-current="page">{{ numar }}</span>
-        {% else %}
-        <a href="{% querystring parametri_catalog pagina=numar %}">{{ numar }}</a>
-        {% endif %}
-    {% endfor %}
-
-    {% if produse.has_next %}
-    <a href="{% querystring parametri_catalog pagina=produse.next_page_number %}">Următor</a>
-    {% endif %}
-    <p>Pagina {{ produse.number }} din {{ produse.paginator.num_pages }}</p>
-</nav>
-{% endif %}
+{% include 'ceaiuri/paginare_catalog.html' with eticheta='Paginare după produse' %}
 {% endblock %}

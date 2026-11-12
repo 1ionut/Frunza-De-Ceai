@@ -65,6 +65,7 @@ TEMPLATES = [
 STATIC_URL = "/static/"
 PRODUSE_SIMILARE = 3
 STOC_MIN = 5
+PROD_PER_PAG = 5
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 

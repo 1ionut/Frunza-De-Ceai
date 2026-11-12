@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.http import Http404, QueryDict
 from django.shortcuts import get_object_or_404, render
 from .accesari import accesari, formateaza_data_romana, Accesare
-from .models import Ceai
+from .models import Categorie, Ceai
 
 DESCRIERE = (
     "Frunză de Ceai este un magazin online de ceaiuri vrac. "
@@ -58,22 +58,26 @@ def istoric(request):
     return render(request, "ceaiuri/istoric.html")
 
 
-def produse(request):
+def produse(request, slug=None):
+    categorie = get_object_or_404(Categorie, slug=slug) if slug is not None else None
     parametri = QueryDict(mutable=True)
     coloana = request.GET.get("coloana", "nume")
     parametri["coloana"] = coloana if coloana in COLOANE_CATALOG else "nume"
     parametri["sort"] = "d" if request.GET.get("sort") == "d" else "a"
     prefix = "-" if parametri["sort"] == "d" else ""
     ceaiuri = Ceai.objects.select_related("categorie")
+    if categorie is not None:
+        ceaiuri = ceaiuri.filter(categorie=categorie)
     taguri = list(dict.fromkeys(tag for tag in request.GET.getlist("tag") if tag))
     if taguri:
         parametri.setlist("tag", taguri)
         ceaiuri = ceaiuri.filter(taguri__contains=taguri)
-    paginator = Paginator(ceaiuri.order_by(prefix + parametri["coloana"], "pk"), 5)
+    ceaiuri = ceaiuri.order_by(prefix + parametri["coloana"], "pk")
+    paginator = Paginator(ceaiuri, settings.PROD_PER_PAG)
     pagina = paginator.get_page(request.GET.get("pagina", 1))
     context = {
         "produse": pagina,
-        "numere_pagini": range(1, paginator.num_pages + 1),
+        "categorie": categorie,
         "parametri_catalog": parametri,
         "coloane_catalog": COLOANE_CATALOG,
         "taguri_active": taguri,

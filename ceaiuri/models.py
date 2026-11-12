@@ -44,6 +44,9 @@ class Categorie(models.Model):
     def __str__(self):
         return self.nume
 
+    def get_absolute_url(self):
+        return reverse("ceaiuri:categorie", kwargs={"slug": self.slug})
+
 
 class Aroma(models.Model):
     nume = models.CharField("nume", max_length=80, error_messages={
