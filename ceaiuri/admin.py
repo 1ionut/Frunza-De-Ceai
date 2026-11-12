@@ -33,7 +33,8 @@ class CeaiAdminForm(forms.ModelForm):
 class CategorieAdmin(MesajeModelAdmin):
     list_display = ("nume", "slug", "culoare", "vizibila")
     list_filter = ("vizibila",)
-    search_fields = ("nume", "descriere", "slug")
+    search_fields = ("nume", "descriere")
+    search_help_text = "Caută o categorie după nume sau descriere."
     prepopulated_fields = {"slug": ("nume",)}
 
 
@@ -41,12 +42,14 @@ class CategorieAdmin(MesajeModelAdmin):
 class AromaAdmin(MesajeModelAdmin):
     list_display = ("nume", "descriere")
     search_fields = ("nume", "descriere")
+    search_help_text = "Caută o aromă după nume sau descriere."
 
 
 @admin.register(Sediu)
 class SediuAdmin(MesajeModelAdmin):
     list_display = ("nume", "adresa", "telefon")
-    search_fields = ("nume", "adresa", "telefon")
+    search_fields = ("nume", "adresa")
+    search_help_text = "Caută un sediu după nume sau adresă."
 
 
 @admin.register(Raion)
@@ -54,7 +57,8 @@ class RaionAdmin(MesajeModelAdmin):
     # Cerința 1: schimbăm ordinea coloanelor și adăugăm adresa modelului Sediu.
     list_display = ("nume", "cod_raion", "sediu", "adresa_sediului", "descriere")
     list_filter = ("sediu",)
-    search_fields = ("cod_raion", "nume", "sediu__nume")
+    search_fields = ("cod_raion", "nume")
+    search_help_text = "Caută un raion după codul local sau nume."
     list_select_related = ("sediu",)
 
     def adresa_sediului(self, obj):
@@ -69,7 +73,8 @@ class CeaiAdmin(MesajeModelAdmin):
         "nume", "categorie", "gramaj_g", "pret_evidentiat", "intensitate", "ecologic", "data_adaugare"
     )
     list_filter = ("categorie", "intensitate", "ecologic", "tara_origine", "arome")
-    search_fields = ("nume", "descriere", "tara_origine")
+    search_fields = ("nume", "descriere")
+    search_help_text = "Caută un ceai după nume sau descriere."
     list_select_related = ("categorie",)
     filter_horizontal = ("arome", "raioane")
     date_hierarchy = "data_adaugare"
