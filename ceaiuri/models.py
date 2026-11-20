@@ -162,3 +162,19 @@ class Ceai(models.Model):
             valideaza_recomandari(self.recomandari_preparare)
         except ValidationError as eroare:
             raise ValidationError({"recomandari_preparare": eroare}) from eroare
+
+
+class Departament(models.Model):
+    nume = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.nume
+
+
+class TipMesaj(models.Model):
+    nume = models.CharField(max_length=20, unique=True)
+    minim_zile = models.PositiveSmallIntegerField()
+    departamente = models.ManyToManyField(Departament)
+
+    def __str__(self):
+        return self.nume
