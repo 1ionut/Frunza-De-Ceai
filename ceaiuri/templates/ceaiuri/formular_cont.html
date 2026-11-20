@@ -1,0 +1,17 @@
+{% extends 'ceaiuri/baza.html' %}
+{% block titlu %}{{ titlu }}{% endblock %}
+{% block continut %}
+<h1>{{ titlu }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ date_form.as_p }}
+    {% if profil_form %}
+        <fieldset>
+            <legend>Profil opțional</legend>
+            {{ profil_form.as_p }}
+        </fieldset>
+    {% endif %}
+    <button type="submit">{{ titlu }}</button>
+</form>
+{% endblock %}

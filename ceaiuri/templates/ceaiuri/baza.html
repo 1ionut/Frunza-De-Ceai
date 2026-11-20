@@ -39,6 +39,13 @@
                 </li>
                 <li><a href="{% url 'ceaiuri:contact' %}">Contact</a></li>
                 <li><a href="{% url 'ceaiuri:cos_virtual' %}">Coș virtual</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'ceaiuri:profil' %}">Contul meu</a></li>
+                    <li><form method="post" action="{% url 'ceaiuri:deconectare' %}">{% csrf_token %}<button type="submit">Deconectare</button></form></li>
+                {% else %}
+                    <li><a href="{% url 'ceaiuri:autentificare' %}">Autentificare</a></li>
+                    <li><a href="{% url 'ceaiuri:inregistrare' %}">Înregistrare</a></li>
+                {% endif %}
                 <li>
                     <a href="{% url 'ceaiuri:info' %}">Informații ▾</a>
                     <ul>

@@ -1,0 +1,12 @@
+{% extends 'ceaiuri/baza.html' %}
+{% block titlu %}Contul meu{% endblock %}
+{% block continut %}
+<h1>Contul meu</h1>
+<dl>
+    {% for camp, valoare in date.items %}
+        <dt>{{ camp }}</dt><dd>{{ valoare }}</dd>
+    {% endfor %}
+</dl>
+<p><a href="{% url 'ceaiuri:modifica_date' %}">Modifică datele</a></p>
+<p><a href="{% url 'ceaiuri:schimba_parola' %}">Schimbă parola</a></p>
+{% endblock %}

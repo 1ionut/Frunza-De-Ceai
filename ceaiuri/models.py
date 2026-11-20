@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, RegexValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -163,9 +164,10 @@ class Ceai(models.Model):
         except ValidationError as eroare:
             raise ValidationError({"recomandari_preparare": eroare}) from eroare
 
-
 class Departament(models.Model):
     nume = models.CharField(max_length=50, unique=True)
+    sef = models.ForeignKey("Angajat", null=True, blank=True, on_delete=models.SET_NULL,
+                            related_name="departamente_conduse")
 
     def __str__(self):
         return self.nume
@@ -178,3 +180,69 @@ class TipMesaj(models.Model):
 
     def __str__(self):
         return self.nume
+
+
+nume_geografic = RegexValidator(r"^[^\W\d_]+(?:[ .'’-][^\W\d_]+)*\Z",
+                               "Scrie numele cu litere, de exemplu România sau Cluj-Napoca.")
+
+
+class DateUtilizator(models.Model):
+    utilizator = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+    telefon = models.CharField(max_length=16, validators=[RegexValidator(
+        r"^\+?[0-9]{7,15}\Z", "Introdu între 7 și 15 cifre, eventual precedate de +.")])
+    tara = models.CharField("țară", max_length=80, validators=[nume_geografic])
+    judet = models.CharField("județ / regiune", max_length=80, validators=[nume_geografic])
+    localitate = models.CharField(max_length=80, validators=[nume_geografic])
+
+
+class Profil(models.Model):
+    utilizator = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+    strada = models.CharField("stradă", max_length=150, blank=True)
+    cod_postal = models.CharField("cod poștal", max_length=12, blank=True)
+
+
+class Angajat(models.Model):
+    utilizator = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+    departament = models.ForeignKey(Departament, on_delete=models.PROTECT)
+    functie = models.CharField("funcție", max_length=80)
+
+
+class Comanda(models.Model):
+    utilizator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    data = models.DateTimeField(auto_now_add=True)
+    prin_curier = models.BooleanField(default=True)
+    status = models.CharField(max_length=12, default="noua",
+                              choices=[("noua", "Nouă"), ("expediata", "Expediată"), ("finalizata", "Finalizată")])
+    produse = models.ManyToManyField(Ceai, through="LinieComanda")
+
+
+class LinieComanda(models.Model):
+    comanda = models.ForeignKey(Comanda, on_delete=models.CASCADE)
+    ceai = models.ForeignKey(Ceai, on_delete=models.PROTECT)
+    cantitate = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["comanda", "ceai"], name="linie_comanda_ceai_unic"),
+            models.CheckConstraint(condition=models.Q(cantitate__gte=1), name="linie_cantitate_pozitiva"),
+        ]
+
+
+class Recenzie(models.Model):
+    utilizator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ceai = models.ForeignKey(Ceai, on_delete=models.CASCADE)
+    nota = models.PositiveSmallIntegerField(choices=[(n, str(n)) for n in range(1, 6)])
+    text = models.TextField()
+
+
+class Intrebare(models.Model):
+    utilizator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ceai = models.ForeignKey(Ceai, on_delete=models.CASCADE)
+    text = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)
+
+
+class Voucher(models.Model):
+    utilizator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cod = models.CharField(max_length=24, unique=True)
+    reducere_lei = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(Decimal("0.01"))])

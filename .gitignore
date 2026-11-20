@@ -7,3 +7,5 @@ acces_admin.txt
 media/
 *.log
 .pytest_cache/
+ceaiuri/fisier.sql
+ceaiuri/fisier.sql.*.tmp
