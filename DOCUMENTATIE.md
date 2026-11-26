@@ -51,7 +51,7 @@ Fiecare dreptunghi reprezintă o entitate, iar fiecare romb numește o relație.
 
 ![Schema catalogului cu cele cinci entități și relațiile dintre ele](documentatie/schema_catalog.svg)
 
-[Deschide imaginea la dimensiunea originală](documentatie/schema_catalog.svg) · [Editează în draw.io](documentatie/schema_catalog.drawio) · [Diagrama inițială](documentatie/diagrama_ceaiuri.png)
+[Diagrama inițială](documentatie/diagrama_ceaiuri.png)
 
 ### Entități și relații
 
@@ -64,8 +64,6 @@ Fiecare dreptunghi reprezintă o entitate, iar fiecare romb numește o relație.
 ## Utilizatori
 
 ![Schema completă a catalogului, conturilor, comenzilor și departamentelor](documentatie/schema_magazin.svg)
-
-[Deschide imaginea la dimensiunea originală](documentatie/schema_magazin.svg) · [Editează în draw.io](documentatie/schema_magazin.drawio)
 
 | Entități | Ce păstrează și cum se leagă |
 | --- | --- |
