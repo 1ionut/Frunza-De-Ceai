@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="560" viewBox="0 0 1050 560" role="img">
+  <title>Catalogul Frunză de Ceai</title>
+  <desc>Tabelele arată entitățile și atributele. Romburile numesc relațiile. Numerele de la capete indică multiplicitatea.</desc>
+  <rect x="0" y="0" width="1050" height="560" fill="white" />
+  <g id="legaturi">
+    <polyline points="224,135.35 255,158.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="379,158.5 345,158.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="224,437.0 246,373.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="379,307.0 354,373.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="596,226.0 657,195.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="804,142.26 753,195.0" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="908.0,189 908.0,261" fill="none" stroke="#222222" stroke-width="1" />
+    <polyline points="908.0,381 908.0,303" fill="none" stroke="#222222" stroke-width="1" />
+  </g>
+  <g id="entitati-si-relatii">
+    <g id="Ceai">
+      <rect x="379" y="91" width="217" height="270" fill="#fff" stroke="#222222" />
+      <text x="487.5" y="113" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Ceai</text>
+      <rect x="379" y="124" width="217" height="1" fill="#222222" />
+      <rect x="427" y="124" width="1" height="237" fill="#222222" />
+      <text x="434" y="142" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">id</text>
+      <text x="403.0" y="142" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK</text>
+      <text x="434" y="163" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">categorie_id</text>
+      <text x="403.0" y="163" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" text-anchor="middle">FK</text>
+      <text x="434" y="184" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">nume</text>
+      <text x="434" y="205" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">descriere</text>
+      <text x="434" y="226" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">tara_origine</text>
+      <text x="434" y="247" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">gramaj_g</text>
+      <text x="434" y="268" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">pret</text>
+      <text x="434" y="289" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">intensitate</text>
+      <text x="434" y="310" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">ecologic</text>
+      <text x="434" y="331" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">data_adaugare</text>
+      <text x="434" y="352" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">recomandari_preparare</text>
+    </g>
+    <g id="Categorie">
+      <rect x="37" y="38" width="187" height="165" fill="#fff" stroke="#222222" />
+      <text x="130.5" y="60" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Categorie</text>
+      <rect x="37" y="71" width="187" height="1" fill="#222222" />
+      <rect x="85" y="71" width="1" height="132" fill="#222222" />
+      <text x="92" y="89" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">id</text>
+      <text x="61.0" y="89" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK</text>
+      <text x="92" y="110" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">nume</text>
+      <text x="92" y="131" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">descriere</text>
+      <text x="92" y="152" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">culoare</text>
+      <text x="92" y="173" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">sigla</text>
+      <text x="92" y="194" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">vizibila</text>
+    </g>
+    <g id="Aroma">
+      <rect x="37" y="386" width="187" height="102" fill="#fff" stroke="#222222" />
+      <text x="130.5" y="408" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Aromă</text>
+      <rect x="37" y="419" width="187" height="1" fill="#222222" />
+      <rect x="85" y="419" width="1" height="69" fill="#222222" />
+      <text x="92" y="437" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">id</text>
+      <text x="61.0" y="437" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK</text>
+      <text x="92" y="458" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">nume</text>
+      <text x="92" y="479" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">descriere</text>
+    </g>
+    <g id="Raion">
+      <rect x="804" y="66" width="208" height="123" fill="#fff" stroke="#222222" />
+      <text x="908.0" y="88" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Raion (entitate slabă)</text>
+      <rect x="804" y="99" width="208" height="1" fill="#222222" />
+      <rect x="852" y="99" width="1" height="90" fill="#222222" />
+      <text x="859" y="117" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">sediu_id</text>
+      <text x="828.0" y="117" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK,FK</text>
+      <text x="859" y="138" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">cod_raion</text>
+      <text x="828.0" y="138" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK</text>
+      <text x="859" y="159" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">nume</text>
+      <text x="859" y="180" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">descriere</text>
+    </g>
+    <g id="Sediu">
+      <rect x="804" y="381" width="208" height="123" fill="#fff" stroke="#222222" />
+      <text x="908.0" y="403" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Sediu</text>
+      <rect x="804" y="414" width="208" height="1" fill="#222222" />
+      <rect x="852" y="414" width="1" height="90" fill="#222222" />
+      <text x="859" y="432" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="start" text-decoration="underline">id</text>
+      <text x="828.0" y="432" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">PK</text>
+      <text x="859" y="453" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">nume</text>
+      <text x="859" y="474" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">adresa</text>
+      <text x="859" y="495" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" text-anchor="start">telefon</text>
+    </g>
+    <polygon id="clasificare" points="255,158 300,137 345,158 300,179" fill="#fff" stroke="#222222" />
+    <text x="300" y="162.5" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="middle">aparține</text>
+    <polygon id="aromatizare" points="246,373 300,352 354,373 300,394" fill="#fff" stroke="#222222" />
+    <text x="300" y="377.5" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="middle">are aromă</text>
+    <polygon id="expunere" points="657,195 705,174 753,195 705,216" fill="#fff" stroke="#222222" />
+    <text x="705" y="199.5" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="middle">expus în</text>
+    <polygon id="asezare" points="861,282 908,261 955,282 908,303" fill="#fff" stroke="#222222" />
+    <text x="908" y="286.5" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="middle">cuprinde</text>
+  </g>
+  <g id="cardinalitati">
+    <text x="231" y="129.35" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start">1</text>
+    <text x="372" y="152.5" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="end">0..N</text>
+    <text x="231" y="453.0" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start">0..N</text>
+    <text x="372" y="301.0" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="end">0..N</text>
+    <text x="603" y="242.0" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start">0..N</text>
+    <text x="797" y="136.26" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="end">0..N</text>
+    <text x="914.0" y="206" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start">0..N</text>
+    <text x="914.0" y="373" fill="#161616" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start">1</text>
+  </g>
+</svg>

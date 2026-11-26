@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="schema_catalog" name="Catalogul Frunză de Ceai">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1050" pageHeight="560" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="clasificare-edge0" edge="1" parent="1" source="Categorie" target="clasificare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=1;exitY=0.59;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="clasificare-edge1" edge="1" parent="1" source="Ceai" target="clasificare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=0;exitY=0.25;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aromatizare-edge0" edge="1" parent="1" source="Aroma" target="aromatizare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aromatizare-edge1" edge="1" parent="1" source="Ceai" target="aromatizare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=0;exitY=0.8;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expunere-edge0" edge="1" parent="1" source="Ceai" target="expunere" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expunere-edge1" edge="1" parent="1" source="Raion" target="expunere" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=0;exitY=0.62;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="asezare-edge0" edge="1" parent="1" source="Raion" target="asezare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="asezare-edge1" edge="1" parent="1" source="Sediu" target="asezare" style="edgeStyle=none;rounded=0;endArrow=none;startArrow=none;strokeColor=#222222;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai" parent="1" vertex="1" value="" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;container=1;collapsible=0;">
+          <mxGeometry x="379" y="91" width="217" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-titlu" parent="Ceai" vertex="1" value="Ceai" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="1" y="0" width="215" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-regla-0" parent="Ceai" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="0" y="33" width="217" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-regla-48" parent="Ceai" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="48" y="33" width="1" height="237" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a0" parent="Ceai" vertex="1" value="id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="36" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-k0" parent="Ceai" vertex="1" value="PK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="36" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a1" parent="Ceai" vertex="1" value="categorie_id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="57" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-k1" parent="Ceai" vertex="1" value="FK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="57" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a2" parent="Ceai" vertex="1" value="nume" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="78" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a3" parent="Ceai" vertex="1" value="descriere" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="99" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a4" parent="Ceai" vertex="1" value="tara_origine" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="120" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a5" parent="Ceai" vertex="1" value="gramaj_g" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="141" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a6" parent="Ceai" vertex="1" value="pret" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="162" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a7" parent="Ceai" vertex="1" value="intensitate" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="183" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a8" parent="Ceai" vertex="1" value="ecologic" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="204" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a9" parent="Ceai" vertex="1" value="data_adaugare" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="225" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Ceai-a10" parent="Ceai" vertex="1" value="recomandari_preparare" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="246" width="160" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie" parent="1" vertex="1" value="" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;container=1;collapsible=0;">
+          <mxGeometry x="37" y="38" width="187" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-titlu" parent="Categorie" vertex="1" value="Categorie" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="1" y="0" width="185" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-regla-0" parent="Categorie" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="0" y="33" width="187" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-regla-48" parent="Categorie" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="48" y="33" width="1" height="132" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a0" parent="Categorie" vertex="1" value="id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="36" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-k0" parent="Categorie" vertex="1" value="PK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="36" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a1" parent="Categorie" vertex="1" value="nume" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="57" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a2" parent="Categorie" vertex="1" value="descriere" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="78" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a3" parent="Categorie" vertex="1" value="culoare" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="99" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a4" parent="Categorie" vertex="1" value="sigla" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="120" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Categorie-a5" parent="Categorie" vertex="1" value="vizibila" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="141" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma" parent="1" vertex="1" value="" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;container=1;collapsible=0;">
+          <mxGeometry x="37" y="386" width="187" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-titlu" parent="Aroma" vertex="1" value="Aromă" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="1" y="0" width="185" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-regla-0" parent="Aroma" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="0" y="33" width="187" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-regla-48" parent="Aroma" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="48" y="33" width="1" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-a0" parent="Aroma" vertex="1" value="id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="36" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-k0" parent="Aroma" vertex="1" value="PK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="36" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-a1" parent="Aroma" vertex="1" value="nume" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="57" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Aroma-a2" parent="Aroma" vertex="1" value="descriere" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="78" width="130" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion" parent="1" vertex="1" value="" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;container=1;collapsible=0;">
+          <mxGeometry x="804" y="66" width="208" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-titlu" parent="Raion" vertex="1" value="Raion (entitate slabă)" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="1" y="0" width="206" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-regla-0" parent="Raion" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="0" y="33" width="208" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-regla-48" parent="Raion" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="48" y="33" width="1" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-a0" parent="Raion" vertex="1" value="sediu_id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="36" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-k0" parent="Raion" vertex="1" value="PK,FK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="36" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-a1" parent="Raion" vertex="1" value="cod_raion" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="57" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-k1" parent="Raion" vertex="1" value="PK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="57" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-a2" parent="Raion" vertex="1" value="nume" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="78" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Raion-a3" parent="Raion" vertex="1" value="descriere" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="99" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu" parent="1" vertex="1" value="" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;container=1;collapsible=0;">
+          <mxGeometry x="804" y="381" width="208" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-titlu" parent="Sediu" vertex="1" value="Sediu" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="1" y="0" width="206" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-regla-0" parent="Sediu" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="0" y="33" width="208" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-regla-48" parent="Sediu" vertex="1" value="" style="strokeColor=none;fillColor=#222222;connectable=0;movable=0;">
+          <mxGeometry x="48" y="33" width="1" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-a0" parent="Sediu" vertex="1" value="id" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=5;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="36" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-k0" parent="Sediu" vertex="1" value="PK" style="text;html=0;spacing=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#161616;connectable=0;">
+          <mxGeometry x="0" y="36" width="48" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-a1" parent="Sediu" vertex="1" value="nume" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="57" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-a2" parent="Sediu" vertex="1" value="adresa" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="78" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="Sediu-a3" parent="Sediu" vertex="1" value="telefon" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=14;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="55" y="99" width="151" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="clasificare" parent="1" vertex="1" value="aparține" style="rhombus;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#161616;">
+          <mxGeometry x="255" y="137" width="90" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="clasificare-card0" parent="1" vertex="1" value="1" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="231" y="115.35" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="clasificare-card1" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=right;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="333" y="138.5" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="aromatizare" parent="1" vertex="1" value="are aromă" style="rhombus;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#161616;">
+          <mxGeometry x="246" y="352" width="108" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="aromatizare-card0" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="231" y="439.0" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="aromatizare-card1" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=right;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="333" y="287.0" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="expunere" parent="1" vertex="1" value="expus în" style="rhombus;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#161616;">
+          <mxGeometry x="657" y="174" width="96" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="expunere-card0" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="603" y="228.0" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="expunere-card1" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=right;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="758" y="122.25999999999999" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="asezare" parent="1" vertex="1" value="cuprinde" style="rhombus;html=0;fillColor=#ffffff;strokeColor=#222222;strokeWidth=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#161616;">
+          <mxGeometry x="861" y="261" width="94" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="asezare-card0" parent="1" vertex="1" value="0..N" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="914.0" y="192" width="39" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="asezare-card1" parent="1" vertex="1" value="1" style="text;html=0;spacing=0;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=13;fontStyle=0;fontColor=#161616;connectable=0;">
+          <mxGeometry x="914.0" y="359" width="39" height="18" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
